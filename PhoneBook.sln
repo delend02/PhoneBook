@@ -5,9 +5,11 @@ VisualStudioVersion = 17.2.32526.322
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PhoneBook.Domain", "PhoneBook.Domain\PhoneBook.Domain.csproj", "{D2EC856D-42C2-4C78-8E6F-8FD97FF61B89}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PhoneBook.Application", "PhoneBook.Application\PhoneBook.Application.csproj", "{05CA39EA-B500-4AA4-87DD-99310709DF04}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PhoneBook.Application", "PhoneBook.Application\PhoneBook.Application.csproj", "{05CA39EA-B500-4AA4-87DD-99310709DF04}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PhoneBook.Infrastucture", "PhoneBook.Infrastucture\PhoneBook.Infrastucture.csproj", "{F82AB92A-DE0B-44D3-9406-8CFC87525278}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PhoneBook.Infrastucture", "PhoneBook.Infrastucture\PhoneBook.Infrastucture.csproj", "{F82AB92A-DE0B-44D3-9406-8CFC87525278}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PhoneBook.Web", "PhoneBook.Web\PhoneBook.Web.csproj", "{06626328-7D6A-4602-B77D-5026DB5055BE}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,6 +29,10 @@ Global
 		{F82AB92A-DE0B-44D3-9406-8CFC87525278}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F82AB92A-DE0B-44D3-9406-8CFC87525278}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F82AB92A-DE0B-44D3-9406-8CFC87525278}.Release|Any CPU.Build.0 = Release|Any CPU
+		{06626328-7D6A-4602-B77D-5026DB5055BE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{06626328-7D6A-4602-B77D-5026DB5055BE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{06626328-7D6A-4602-B77D-5026DB5055BE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{06626328-7D6A-4602-B77D-5026DB5055BE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
