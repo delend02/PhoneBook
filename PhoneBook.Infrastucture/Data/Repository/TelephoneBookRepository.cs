@@ -15,37 +15,41 @@ namespace PhoneBook.Infrastucture.Data.Repository
 
         public void Create(TelephoneBook item)
         {
-            throw new NotImplementedException();
+            _db.Books.Add(item);
         }
 
         public void Delete(int id)
         {
-            throw new NotImplementedException();
+            var books = _db.Books.Find(id);
+            if (books is not null)
+                _db.Books.Remove(books);
         }
 
         public TelephoneBook Find(Func<TelephoneBook, bool> predicate)
         {
-            throw new NotImplementedException();
+            return _db.Books.Find(predicate);
         }
 
-        public TelephoneBook Get(int id)
+        public TelephoneBook GetByID(int id)
         {
-            throw new NotImplementedException();
+            var result = _db.Books.Find(id);
+            return result;
         }
 
         public IEnumerable<TelephoneBook> GetAll()
         {
-            throw new NotImplementedException();
+            var result = _db.Books.ToList();
+            return result;
         }
 
         public void Save()
         {
-            throw new NotImplementedException();
+            _db.SaveChanges();
         }
 
         public void Update(TelephoneBook item)
         {
-            throw new NotImplementedException();
+            _db.Books.Update(item);
         }
     }
 }

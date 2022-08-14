@@ -10,42 +10,46 @@ namespace PhoneBook.Infrastucture.Data.Repository
 
         public TelephoneDescriptionRepository()
         {
-            
+
         }
 
         public void Create(TelephoneDescription item)
         {
-            throw new NotImplementedException();
+            _db.Descriptions.Add(item);
         }
 
         public void Delete(int id)
         {
-            throw new NotImplementedException();
+            var books = _db.Books.Find(id);
+            if (books is not null)
+                _db.Books.Remove(books);
         }
 
         public TelephoneDescription Find(Func<TelephoneDescription, bool> predicate)
         {
-            throw new NotImplementedException();
+            return _db.Descriptions.Find(predicate);
         }
 
-        public TelephoneDescription Get(int id)
+        public TelephoneDescription GetByID(int id)
         {
-            throw new NotImplementedException();
+            var result = _db.Descriptions.Find(id);
+            return result;
         }
 
         public IEnumerable<TelephoneDescription> GetAll()
         {
-            throw new NotImplementedException();
+            var result = _db.Descriptions.ToList();
+            return result;
         }
 
         public void Save()
         {
-            throw new NotImplementedException();
+            _db.SaveChanges();
         }
 
         public void Update(TelephoneDescription item)
         {
-            throw new NotImplementedException();
+            _db.Descriptions.Update(item);
         }
     }
 }
