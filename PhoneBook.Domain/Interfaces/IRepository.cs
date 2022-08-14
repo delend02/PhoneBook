@@ -5,7 +5,7 @@
     {
         IEnumerable<T> GetAll();
         T Find(Func<T, bool> predicate);
-        T Get(int id);
+        T GetByID(int id);
         void Create(T item);
         void Update(T item);
         void Delete(int id);
