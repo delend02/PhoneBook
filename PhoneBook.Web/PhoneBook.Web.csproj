@@ -1,11 +1,17 @@
 <Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
-    <TargetFramework>net5.0</TargetFramework>
+    <TargetFramework>net6.0</TargetFramework>
   </PropertyGroup>
 
   <ItemGroup>
     <Folder Include="Models\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\PhoneBook.Application\PhoneBook.Application.csproj" />
+    <ProjectReference Include="..\PhoneBook.Domain\PhoneBook.Domain.csproj" />
+    <ProjectReference Include="..\PhoneBook.Infrastucture\PhoneBook.Infrastucture.csproj" />
   </ItemGroup>
 
 </Project>

@@ -8,9 +8,9 @@ namespace PhoneBook.Infrastucture.Data.Repository
     {
         private PhoneContext _db;
 
-        public TelephoneBookRepository()
+        public TelephoneBookRepository(PhoneContext db)
         {
-
+            _db = db;
         }
 
         public void Create(TelephoneBook item)
