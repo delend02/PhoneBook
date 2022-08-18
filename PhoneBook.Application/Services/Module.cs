@@ -14,7 +14,12 @@ namespace PhoneBook.Application.Services
             services.AddScoped<IRepository<TelephoneBook>, TelephoneBookRepository>();
             services.AddScoped<IRepository<TelephoneDescription>, TelephoneDescriptionRepository>();
             services.AddDbContext<PhoneContext>(options => 
-            options.UseSqlServer("Server =(local); Database = PhoneBook; Trusted_Connection = True; MultipleActiveResultSets = true; User ID = root; pwd = root"));
+                    options.UseSqlServer("Server =(local); Database = PhoneBook; Trusted_Connection = True; MultipleActiveResultSets = true; User ID = root; pwd = root", 
+                            sqlServerOptionsAction: sqlserverOptions =>
+                            {
+                                sqlserverOptions.EnableRetryOnFailure(
+                                    3, TimeSpan.FromSeconds(5), new List<int> { 4060 });
+                            }));
             return services;
         }
 
