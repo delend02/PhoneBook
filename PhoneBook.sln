@@ -9,7 +9,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PhoneBook.Application", "Ph
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PhoneBook.Infrastucture", "PhoneBook.Infrastucture\PhoneBook.Infrastucture.csproj", "{F82AB92A-DE0B-44D3-9406-8CFC87525278}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PhoneBook.Web", "PhoneBook.Web\PhoneBook.Web.csproj", "{06626328-7D6A-4602-B77D-5026DB5055BE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PhoneBook.Web", "PhoneBook.Web\PhoneBook.Web.csproj", "{06626328-7D6A-4602-B77D-5026DB5055BE}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
