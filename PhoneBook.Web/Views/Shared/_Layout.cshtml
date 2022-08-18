@@ -1,0 +1,39 @@
+﻿<!doctype html>
+<html lang="ru">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>home</title>
+    <link rel="stylesheet" href="~/css/style.css">
+    <link rel="stylesheet" href="~/css/left-nav-style.css">
+    <link rel="stylesheet" href="~/css/layout.css">
+    <link rel="stylesheet" href="~/css/table.css" />
+</head>
+<body>
+    <input type="checkbox" id="nav-toggle" hidden>
+    <nav class="nav">
+        <label for="nav-toggle" class="nav-toggle"></label>
+        <h2>Меню</h2>
+        <ul>
+            <li><a href="#1">Контакты</a>
+            <li><a href="#2">Поиск</a>
+            <li><a href="#3">Добавить</a>
+        </ul>
+    </nav>
+    <main>
+        <article>
+            <header>
+                <h1>Телефонная книга</h1>
+            </header>
+            <section>
+                @RenderBody()
+            </section>
+            <hr>
+            <footer>
+              <p>© 2022 Токарев Максим</p>
+            </footer>
+        </article>
+    </main>
+</body>
+</html>
