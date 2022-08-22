@@ -1,28 +1,35 @@
-﻿<div>
-Total contact: 
+﻿@model List<TelephoneBook>
+@using PhoneBook.Domain.Entity
+
+@{
+    ViewData["Title"] = "Контакты";
+}
+
+<div>
+<p>Всего контактов: @Model.Count</p>
 <table class="table">
     <thead>
     <tr>
         <th>ID</th>
-        <th>Last name</th>
-        <th>First name</th>
-        <th>Patronymic</th>
-        <th>Number phone</th>
-        <th>Address</th>
-        <th>Description</th>
+        <th>Фамилия</th>
+        <th>Имя</th>
+        <th>Отчество</th>
+        <th>Номер телефона</th>
+        <th>Адресс</th>
+        <th>Описание</th>
     </tr>
     </thead>
     <tbody>
-        @for (int i = 0; i < 10; i++)
+        @foreach (var item in Model)
         {
             <tr>
-                <td>ID</td>
-                <td>Last name</td>
-                <td>First name</td>
-                <td>Patronymic</td>
-                <td>Number phone</td>
-                <td>Address</td>
-                <td>Description</td>
+                <td>@item.ID </td>
+                <td>@item.LastName</td>
+                <td>@item.FirstName</td>
+                <td>@item.SurName</td>
+                <td>@item.NumberPhone</td>
+                <td>@item.Address</td>
+                <td>@item.Description</td>
             </tr>
         }
     </tbody>
