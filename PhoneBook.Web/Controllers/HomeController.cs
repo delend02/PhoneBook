@@ -38,7 +38,7 @@ namespace PhoneBook.Web.Controllers
             return View(books);
         }
 
-        public IActionResult Search()
+        public IActionResult Add()
         {
             return View();
         }

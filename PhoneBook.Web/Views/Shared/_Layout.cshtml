@@ -1,6 +1,5 @@
 ﻿@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
 
-
 <html lang="ru">
 <head>
     <meta charset="utf-8">
@@ -19,14 +18,17 @@
         <h2>Меню</h2>
         <ul>
             <li><a asp-area="" asp-controller="Home" asp-action="Table">Контакты</a>
-            <li><a asp-area="" asp-controller="Home" asp-action="Search">Поиск</a>
-            <li><a href="#3">Добавить</a>
+            <li><a asp-area="" asp-controller="Home" asp-action="Add">Добавить</a>
         </ul>
     </nav>
     <main>
         <article>
             <header>
                 <h1>Телефонная книга</h1>
+                <form class="search-form">
+                <button><img src="~/search.png" alt="search"></button>
+                <input type="text" placeholder="Поиск">
+                </form>
             </header>
             <section>
                 @RenderBody()
