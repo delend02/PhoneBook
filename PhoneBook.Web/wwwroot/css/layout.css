@@ -42,11 +42,11 @@ section {
     flex-direction: column;
 }
 
-    .menu-list a {
-        text-decoration: none;
-        text-transform: uppercase;
-        font-weight: 900;
-    }
+.menu-list a {
+    text-decoration: none;
+    text-transform: uppercase;
+    font-weight: 900;
+}
 
 .menu-btn {
     width: 30px;
@@ -65,4 +65,41 @@ section {
 
 .content_active {
     transform: translateX(30%);
+}
+
+.search-form {
+    background-color: #ffffff;
+    background-color: #f0f0f0;
+    width: 350px;
+    margin: 10px;
+    border-radius: 8px;
+}
+
+.search-form button {
+    margin: 0;
+    padding: 18px;
+    margin: 5px;
+    border-color: transparent;
+    border-style: solid;
+    border-width: 0 1px;
+    outline: none;
+    border-radius: 100%;
+}
+
+.search-form button img {
+    width: 23px;
+}
+
+.search-form button:hover {
+    background-color: #d4d4d4;
+}
+
+.search-form input {
+    border-color: transparent;
+    border-style: solid;
+    border-width: 0 1px;
+    outline: none;
+    background-color: #f0f0f0;
+    padding: 10px;
+    font-size: 20px;
 }
