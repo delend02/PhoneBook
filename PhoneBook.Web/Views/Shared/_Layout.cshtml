@@ -9,7 +9,8 @@
     <link rel="stylesheet" href="~/css/style.css">
     <link rel="stylesheet" href="~/css/left-nav-style.css">
     <link rel="stylesheet" href="~/css/layout.css">
-    <link rel="stylesheet" href="~/css/table.css" />
+    <link rel="stylesheet" href="~/css/table.css"/>
+    <link rel="stylesheet" href="~/css/add.css"/>
 </head>
 <body>
     <input type="checkbox" id="nav-toggle" hidden>
@@ -25,10 +26,10 @@
         <article>
             <header>
                 <h1>Телефонная книга</h1>
-                <form class="search-form">
-                <button><img src="~/search.png" alt="search"></button>
+              <div class="search-form">
+                <div><img src="~/search.png" alt="search"></div>
                 <input type="text" placeholder="Поиск">
-                </form>
+              </div>
             </header>
             <section>
                 @RenderBody()

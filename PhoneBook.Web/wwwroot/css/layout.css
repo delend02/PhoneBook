@@ -6,8 +6,8 @@ section {
     height: 100vh;
     display: flex;
     justify-content: center;
-    align-items: center;
     color: #000;
+    margin-top: 30px
 }
 
 .wrapper {
@@ -68,14 +68,14 @@ section {
 }
 
 .search-form {
-    background-color: #ffffff;
     background-color: #f0f0f0;
     width: 350px;
     margin: 10px;
     border-radius: 8px;
 }
 
-.search-form button {
+.search-form div {
+    display: inline-block;
     margin: 0;
     padding: 18px;
     margin: 5px;
@@ -84,13 +84,14 @@ section {
     border-width: 0 1px;
     outline: none;
     border-radius: 100%;
+    cursor: pointer;
 }
 
-.search-form button img {
+.search-form div img {
     width: 23px;
 }
 
-.search-form button:hover {
+.search-form div:hover {
     background-color: #d4d4d4;
 }
 
