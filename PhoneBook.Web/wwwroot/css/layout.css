@@ -5,10 +5,10 @@
 section {
     height: 100vh;
     display: flex;
-    justify-content: center;
-    color: #000;
-    margin-top: 30px
+    color: rgb(0, 0, 0);
+    flex-direction: column;
 }
+
 
 .wrapper {
     position: relative;
