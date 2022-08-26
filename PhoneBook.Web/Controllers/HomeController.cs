@@ -32,13 +32,15 @@ namespace PhoneBook.Web.Controllers
             books.Add(new TelephoneBook(8, "Tokarev", "Maksim", "Evgenevich", "869434", "CBcB", null));
             books.Add(new TelephoneBook(9, "Tokarev", "Maksim", "Evgenevich", "4", "ZBBBXCBXC", null));
 
-
-
-
             return View(books);
         }
 
         public IActionResult Add()
+        {
+            return View();
+        }
+
+        public IActionResult About()
         {
             return View();
         }
