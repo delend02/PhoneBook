@@ -18,13 +18,11 @@
 </thead>
 <tbody>
     @foreach (var item in Model)
-    {
-                        
+    {                  
         <tr>
             <td>@item.LastName</td>
             <td>@item.FirstName</td>
             <td><a asp-area="" asp-controller="Home" asp-action="About">@item.NumberPhone</a></td>
-            
         </tr>
     }
 </tbody>

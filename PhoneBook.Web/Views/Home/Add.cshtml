@@ -1,8 +1,15 @@
-﻿@{
+﻿@using PhoneBook.Domain.Entity
+
+@model TelephoneBook
+@{
     ViewData["Title"] = "Добавление";
 }
 
 <div class="added-contact">
+    @using (Html.BeginForm("Add", "Home", FormMethod.Post))
+    {
+        @Html.TextBoxFor(model => model.FirstName)
+    }
     <input class="input-info" type="text" placeholder="Имя">
     <input class="input-info" type="text" placeholder="Фамилия">
     <input class="input-info" type="text" placeholder="Отчество">

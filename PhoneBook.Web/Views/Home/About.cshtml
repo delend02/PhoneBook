@@ -1,7 +1,21 @@
-﻿@{
+﻿@using PhoneBook.Domain.Entity
+
+@model TelephoneBook
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+
+
+@{
     ViewData["Title"] = "Описание";
 }
 
-<div>
-    ФИО
+<div class="section-name">
+    <h1 class="names-h1">@Model.LastName @Model.FirstName @Model.SurName</h1>
+    <div class="btn">Изменить</div>
+</div>
+<div class="section-about">
+    <h3>Адрес</h3>
+    @Model.Address
+    <hr class="line">
+    <h3>Номер телефона</h3>
+    @Model.NumberPhone
 </div>
