@@ -14,13 +14,13 @@ namespace PhoneBook.Web.Controllers
             _bookRepository = bookRepository;
         }
 
-       
+        List<TelephoneBook> books = new List<TelephoneBook>();
 
         public IActionResult Table()
         {
             //var result = _bookRepository.GetAll();
 
-            List<TelephoneBook> books = new List<TelephoneBook>();
+           
 
             books.Add(new TelephoneBook(1, "Tokarev", "Maksim", "Evgenevich", "972325", "sdhbxc"));
             books.Add(new TelephoneBook(2, "Tokarev", "Maksim", "Evgenevich", "43423", "EFFDc"));
@@ -39,6 +39,8 @@ namespace PhoneBook.Web.Controllers
         {
             return View();
         }
+
+
 
         public IActionResult About()
         {

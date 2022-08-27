@@ -1,0 +1,30 @@
+﻿.names-h1 {
+    margin: 0;
+    font-size: 40px;
+}
+
+
+.section-name .btn {
+    width: 8em;
+    font-size: 20px;
+}
+
+.section-name {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 30px;
+}
+
+h3 {
+    margin: 0;
+    margin-bottom: 25px;
+}
+
+.line {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.section-about {
+    margin-top: 10px;
+}
