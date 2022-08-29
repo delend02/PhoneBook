@@ -1,9 +1,7 @@
-﻿namespace PhoneBook.Domain.Entity
+﻿namespace PhoneBook.Web.Models
 {
-    public class TelephoneBook
+    public class TelephoneDescriptionModel
     {
-
-
         public ulong ID { get; set; }
         public string LastName { get; set; }
         public string FirstName { get; set; }
