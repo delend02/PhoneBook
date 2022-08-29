@@ -13,8 +13,9 @@
     margin: 150px;
 }
 
-.btn {
+form .btn {
     display: block;
+    width: 100%;
     color: black;
     font: 1.5em 'Open Sans', sans-serif;
 }

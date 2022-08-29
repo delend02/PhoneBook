@@ -1,6 +1,7 @@
 ﻿@using PhoneBook.Domain.Entity
 
 @model TelephoneBook
+
 @{
     ViewData["Title"] = "Добавление";
 }
@@ -8,12 +9,11 @@
 <div class="added-contact">
     @using (Html.BeginForm("Add", "Home", FormMethod.Post))
     {
-        @Html.TextBoxFor(model => model.FirstName)
+        @Html.TextBoxFor(model => model.FirstName, new {@class = "input-info", @placeholder = "Имя"})
+        @Html.TextBoxFor(model => model.LastName, new {@class = "input-info", @placeholder = "Фамилия"})
+        @Html.TextBoxFor(model => model.SurName, new {@class = "input-info", @placeholder = "Отчество"})
+        @Html.TextBoxFor(model => model.NumberPhone, new {@class = "input-info", @placeholder = "Номер телефона"})
+        @Html.TextBoxFor(model => model.Address, new {@class = "input-info", @placeholder = "Адресс"})
+        <input type="submit" class="btn"/>
     }
-    <input class="input-info" type="text" placeholder="Имя">
-    <input class="input-info" type="text" placeholder="Фамилия">
-    <input class="input-info" type="text" placeholder="Отчество">
-    <input class="input-info" type="text" placeholder="Номер">
-    <input class="input-info" type="text" placeholder="Адрес">
-    <div class="btn">Сохранить</div>
 </div>

@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using PhoneBook.Domain.Entity;
 using PhoneBook.Domain.Interfaces;
+using PhoneBook.Web.Models;
 using System.Collections.Generic;
 
 namespace PhoneBook.Web.Controllers
@@ -9,38 +10,36 @@ namespace PhoneBook.Web.Controllers
     {
         private readonly IRepository<TelephoneBook> _bookRepository;
 
+        List<TelephoneBook> books;
         public HomeController(IRepository<TelephoneBook> bookRepository)
         {
+            books = new List<TelephoneBook> {
+                        new TelephoneBook {Address = "231", ID = 1, SurName="Евгеньевич", FirstName = "Максим", LastName = "Токарев", NumberPhone = "89114966798" },
+                        new TelephoneBook {Address = "157", ID = 1, SurName="Сергеевич", FirstName = "Максим", LastName = "Токарев", NumberPhone = "89114966798" },
+                        new TelephoneBook {Address = "63", ID = 1, SurName="Александрович", FirstName = "Максим", LastName = "Токарев", NumberPhone = "89114966798" },
+                        new TelephoneBook {Address = "234", ID = 1, SurName="Витальевич", FirstName = "Максим", LastName = "Токарев", NumberPhone = "89114966798" }};
+               
             _bookRepository = bookRepository;
         }
 
-        List<TelephoneBook> books = new List<TelephoneBook>();
 
         public IActionResult Table()
         {
-            //var result = _bookRepository.GetAll();
-
-           
-
-            books.Add(new TelephoneBook(1, "Tokarev", "Maksim", "Evgenevich", "972325", "sdhbxc"));
-            books.Add(new TelephoneBook(2, "Tokarev", "Maksim", "Evgenevich", "43423", "EFFDc"));
-            books.Add(new TelephoneBook(3, "Tokarev", "Maksim", "Evgenevich", "1231", "gdge"));
-            books.Add(new TelephoneBook(4, "Tokarev", "Maksim", "Evgenevich", "5346", "cBCXCv"));
-            books.Add(new TelephoneBook(5, "Tokarev", "Maksim", "Evgenevich", "7567", "CVcbcbz"));
-            books.Add(new TelephoneBook(6, "Tokarev", "Maksim", "Evgenevich", "23542", "VvD"));
-            books.Add(new TelephoneBook(7, "Tokarev", "Maksim", "Evgenevich", "23146", "XCCXC"));
-            books.Add(new TelephoneBook(8, "Tokarev", "Maksim", "Evgenevich", "869434", "CBcB"));
-            books.Add(new TelephoneBook(9, "Tokarev", "Maksim", "Evgenevich", "4", "ZBBBXCBXC"));
-
             return View(books);
         }
 
+        [HttpGet]
         public IActionResult Add()
         {
             return View();
         }
 
-
+        [HttpPost]
+        public IActionResult Add(TelephoneDescriptionModel telephoneBook)
+        {
+            var a = telephoneBook;
+            return View();
+        }
 
         public IActionResult About()
         {
