@@ -1,6 +1,7 @@
-﻿@using PhoneBook.Web.Models
+﻿@using PhoneBook.Domain.Entity
+@using PhoneBook.Web.Models
 
-@model TelephoneDescriptionModel
+@model TelephoneBook
 @addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
 
 
@@ -10,7 +11,7 @@
 
 <div class="section-name">
     <h1 class="names-h1">@Model.LastName @Model.FirstName @Model.SurName</h1>
-    <div class="btn">Изменить</div>
+    <div class="btn">Удалить</div>
 </div>
 <div class="section-about">
     <h3>Адрес</h3>
