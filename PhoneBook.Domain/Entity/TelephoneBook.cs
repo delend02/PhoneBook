@@ -2,8 +2,6 @@
 {
     public class TelephoneBook
     {
-
-
         public ulong ID { get; set; }
         public string LastName { get; set; }
         public string FirstName { get; set; }

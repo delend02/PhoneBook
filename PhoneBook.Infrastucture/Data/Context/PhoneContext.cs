@@ -9,7 +9,7 @@ namespace PhoneBook.Infrastucture.Data.Context
 
         public PhoneContext(DbContextOptions<PhoneContext> dbContext) 
             : base(dbContext)
-        {
+        { 
 
         }
     }
