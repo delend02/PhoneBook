@@ -18,7 +18,7 @@ namespace PhoneBook.Infrastucture.Data.Repository
             _db.Books.Add(item);
         }
 
-        public void Delete(int id)
+        public void Delete(ulong id)
         {
             var books = _db.Books.Find(id);
             if (books is not null)
@@ -30,7 +30,7 @@ namespace PhoneBook.Infrastucture.Data.Repository
             return _db.Books.Find(predicate);
         }
 
-        public TelephoneBook GetByID(int id)
+        public TelephoneBook GetByID(ulong id)
         {
             var result = _db.Books.Find(id);
             return result;
