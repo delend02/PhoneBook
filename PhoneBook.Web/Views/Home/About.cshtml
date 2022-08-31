@@ -9,14 +9,23 @@
     ViewData["Title"] = "Описание";
 }
 
-<div class="section-name">
-    <h1 class="names-h1">@Model.LastName @Model.FirstName @Model.SurName</h1>
-    <div class="btn">Удалить</div>
-</div>
-<div class="section-about">
-    <h3>Адрес</h3>
-    @Model.Address
-    <hr class="line">
-    <h3>Номер телефона</h3>
-    @Model.NumberPhone
-</div>
+@if(Model is null)
+{
+    <p>Контакт не найден</p>
+}
+else
+{
+    <div class="section-name">
+        <h1 class="names-h1">@Model.LastName @Model.FirstName @Model.SurName</h1>
+        <form asp-controller="Home" asp-action="AboutDelete" asp-route-id="@Model.ID">
+            <button type="submit" class="btn">Удалить</button>
+        </form>
+    </div>
+    <div class="section-about">
+        <h3>Адрес</h3>
+        @Model.Address
+        <hr class="line">
+        <h3>Номер телефона</h3>
+        @Model.NumberPhone
+    </div>
+}

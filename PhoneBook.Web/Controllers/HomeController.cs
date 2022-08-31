@@ -13,7 +13,6 @@ namespace PhoneBook.Web.Controllers
             _bookRepository = bookRepository;
         }
 
-
         public IActionResult Table()
         {
             var books = _bookRepository.GetAll();
@@ -29,17 +28,33 @@ namespace PhoneBook.Web.Controllers
         [HttpPost]
         public IActionResult Add(TelephoneBook telephoneBook)
         {
+
             _bookRepository.Create(telephoneBook);
             _bookRepository.Save();
-            return View("Table");
+
+            return View("Table", _bookRepository.GetAll());
         }
 
-        
+        [HttpGet]
         public IActionResult About([FromRoute] string ID)
         {
-            var book = _bookRepository.Find(book => book.ID == ulong.Parse(ID));
+            if (!ulong.TryParse(ID, out var result))
+                return View();
 
+            var book = _bookRepository.GetByID(result);
             return View(book);
         }
+
+        [HttpPost("about")]
+        public IActionResult AboutDelete(string ID)
+        {
+            if (!ulong.TryParse(ID, out var result))
+                return View();
+
+            _bookRepository.Delete(result);
+            _bookRepository.Save();
+            return View("Table", _bookRepository.GetAll());
+        }
+
     }
 }

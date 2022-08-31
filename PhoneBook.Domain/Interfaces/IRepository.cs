@@ -5,10 +5,10 @@
     {
         IEnumerable<T> GetAll();
         T Find(Func<T, bool> predicate);
-        T GetByID(int id);
+        T GetByID(ulong id);
         void Create(T item);
         void Update(T item);
-        void Delete(int id);
+        void Delete(ulong id);
         void Save();
     }
 }
