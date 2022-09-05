@@ -56,5 +56,15 @@ namespace PhoneBook.Web.Controllers
             return View("Table", _bookRepository.GetAll());
         }
 
+        [HttpPost("about")]
+        public IActionResult Correct(string ID)
+        {
+            if (!ulong.TryParse(ID, out var result))
+                return View();
+
+            _bookRepository.Delete(result);
+            _bookRepository.Save();
+            return View("Table", _bookRepository.GetAll());
+        }
     }
 }
