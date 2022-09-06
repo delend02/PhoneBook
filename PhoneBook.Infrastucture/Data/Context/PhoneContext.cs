@@ -7,6 +7,9 @@ namespace PhoneBook.Infrastucture.Data.Context
     {
         public DbSet<TelephoneBook> Books { get; set; }
 
+        public DbSet<User> Users { get; set; }
+
+
         public PhoneContext(DbContextOptions<PhoneContext> dbContext) 
             : base(dbContext)
         { 
