@@ -5,6 +5,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Content Remove="Views\Home\Edit.cshtml" />
     <Content Remove="wwwroot\search.png" />
     <Content Remove="wwwroot\src\search.png" />
   </ItemGroup>
@@ -18,6 +19,18 @@
   <ItemGroup>
     <Resource Include="wwwroot\search.png" />
     <Resource Include="wwwroot\src\search.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <UpToDateCheckInput Remove="Views\Home\Edit.cshtml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <_ContentIncludedByDefault Remove="Views\Home\Edit.cshtml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="Views\Home\Edit.cshtml" />
   </ItemGroup>
 
 </Project>
