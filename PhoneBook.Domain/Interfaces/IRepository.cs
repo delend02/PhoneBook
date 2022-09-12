@@ -5,6 +5,7 @@
     {
         IEnumerable<T> GetAll();
         T Find(Func<T, bool> predicate);
+        IEnumerable<T> FindAll(Func<T, bool> predicate);
         T GetByID(ulong id);
         void Create(T item);
         void Update(T item);

@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using PhoneBook.Application.Services;
 using PhoneBook.Domain.Entity;
 using PhoneBook.Domain.Interfaces;
 
@@ -6,16 +7,17 @@ namespace PhoneBook.Web.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly IRepository<TelephoneBook> _bookRepository;
+        private readonly ITelephoneServices _telephoneServices;
 
-        public HomeController(IRepository<TelephoneBook> bookRepository)
+        public HomeController(ITelephoneServices telephoneServices)
         {
-            _bookRepository = bookRepository;
+            _telephoneServices = telephoneServices;
         }
 
+        [HttpGet]
         public IActionResult Table()
         {
-            var books = _bookRepository.GetAll();
+            var books = _telephoneServices.GetAll();
             return View(books);
         }
 
@@ -29,10 +31,9 @@ namespace PhoneBook.Web.Controllers
         public IActionResult Add(TelephoneBook telephoneBook)
         {
 
-            _bookRepository.Create(telephoneBook);
-            _bookRepository.Save();
+            _telephoneServices.Create(telephoneBook);
 
-            return View("Table", _bookRepository.GetAll());
+            return View("Table", _telephoneServices.GetAll());
         }
 
         [HttpGet]
@@ -41,30 +42,28 @@ namespace PhoneBook.Web.Controllers
             if (!ulong.TryParse(ID, out var result))
                 return View();
 
-            var book = _bookRepository.GetByID(result);
+            var book = _telephoneServices.Get(result);
             return View(book);
         }
 
-        [HttpPost("about")]
+        [HttpPost]
         public IActionResult AboutDelete(string ID)
         {
             if (!ulong.TryParse(ID, out var result))
                 return View();
 
-            _bookRepository.Delete(result);
-            _bookRepository.Save();
-            return View("Table", _bookRepository.GetAll());
+            _telephoneServices.Delete(result);
+            return View("Table", _telephoneServices.GetAll());
         }
 
-        [HttpPost("about")]
+        [HttpPost]
         public IActionResult Correct(string ID)
         {
             if (!ulong.TryParse(ID, out var result))
                 return View();
 
-            _bookRepository.Delete(result);
-            _bookRepository.Save();
-            return View("Table", _bookRepository.GetAll());
+            _telephoneServices.Delete(result);
+            return View("Table", _telephoneServices.GetAll());
         }
     }
 }
