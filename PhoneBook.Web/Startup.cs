@@ -19,6 +19,7 @@ namespace PhoneBook.Web
         public void ConfigureServices(IServiceCollection services)
         {
             services.DatabaseConnected();
+            services.AddScoped<ITelephoneServices, TelephoneService>();
             services.AddControllersWithViews();
         }
 

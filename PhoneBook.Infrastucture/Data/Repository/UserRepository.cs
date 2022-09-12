@@ -6,9 +6,9 @@ namespace PhoneBook.Infrastucture.Data.Repository
 {
     public class UserRepository : IRepository<User>
     {
-        private PhoneContext _db;
+        private UserContext _db;
 
-        public UserRepository(PhoneContext db)
+        public UserRepository(UserContext db)
         {
             _db = db;
         }
@@ -28,6 +28,11 @@ namespace PhoneBook.Infrastucture.Data.Repository
         public User Find(Func<User, bool> predicate)
         {
             return _db.Users.Find(predicate);
+        }
+
+        public IEnumerable<User> FindAll(Func<User, bool> predicate)
+        {
+            throw new NotImplementedException();
         }
 
         public IEnumerable<User> GetAll()

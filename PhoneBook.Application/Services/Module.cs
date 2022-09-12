@@ -12,7 +12,7 @@ namespace PhoneBook.Application.Services
         public static IServiceCollection DatabaseConnected(this IServiceCollection services)
         {
             services.AddScoped<IRepository<TelephoneBook>, TelephoneBookRepository>();
-            services.AddScoped<IRepository<User>, UserRepository>();
+            //services.AddScoped<IRepository<User>, UserRepository>();
             services.AddDbContext<PhoneContext>(options => 
                     options.UseSqlServer("Server =(local); Database = PhoneBook; Trusted_Connection = True; MultipleActiveResultSets = true; User ID = root; pwd = root", 
                             sqlServerOptionsAction: sqlserverOptions =>

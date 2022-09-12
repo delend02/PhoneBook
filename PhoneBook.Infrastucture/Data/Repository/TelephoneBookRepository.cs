@@ -51,5 +51,11 @@ namespace PhoneBook.Infrastucture.Data.Repository
         {
             _db.Books.Update(item);
         }
+
+        public IEnumerable<TelephoneBook> FindAll(Func<TelephoneBook, bool> predicate)
+        {
+            var result = _db.Books.Where(predicate);
+            return result;
+        }
     }
 }
