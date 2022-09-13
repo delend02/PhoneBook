@@ -1,7 +1,6 @@
-﻿@using PhoneBook.Domain.Entity
-@using PhoneBook.Web.Models
+﻿@using PhoneBook.Web.Models
 
-@model List<TelephoneBook>
+@model List<TelephoneBookModel>
 
 @addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
 
@@ -14,24 +13,24 @@
     {
     <p>Всего контактов: @Model.Count</p>
     <table class="table">
-    <thead>
-    <tr>
-        <th>Фамилия</th>
-        <th>Имя</th>
-        <th>Номер телефона</th>
-    </tr>
-    </thead>
-    <tbody>
-        @foreach (var item in Model)
-        {                  
+        <thead>
             <tr>
-                <td>@item.LastName</td>
-                <td>@item.FirstName</td>
-                <td><a asp-area="" asp-controller="Home" asp-action="About" asp-route-id="@item.ID">@item.NumberPhone</a></td>
+                <th>Фамилия</th>
+                <th>Имя</th>
+                <th>Номер телефона</th>
             </tr>
-        }
-    </tbody>
-        </table>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {                  
+                <tr>
+                    <td>@item.LastName</td>
+                    <td>@item.FirstName</td>
+                    <td><a asp-area="" asp-controller="Home" asp-action="About" asp-route-id="@item.ID">@item.NumberPhone</a></td>
+                </tr>
+            }
+        </tbody>
+    </table>
     }
     else
     {
