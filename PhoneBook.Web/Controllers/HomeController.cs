@@ -2,6 +2,7 @@
 using PhoneBook.Application.Services;
 using PhoneBook.Domain.Entity;
 using PhoneBook.Domain.Interfaces;
+using PhoneBook.Web.Models;
 
 namespace PhoneBook.Web.Controllers
 {
@@ -28,11 +29,9 @@ namespace PhoneBook.Web.Controllers
         }
 
         [HttpPost]
-        public IActionResult Add(TelephoneBook telephoneBook)
+        public IActionResult Add(TelephoneDescriptionModel telephoneBook)
         {
-
             _telephoneServices.Create(telephoneBook);
-
             return View("Table", _telephoneServices.GetAll());
         }
 
