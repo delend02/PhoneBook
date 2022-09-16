@@ -25,6 +25,11 @@ namespace PhoneBook.Infrastucture.Data.Repository
                 _db.Users.Remove(user);
         }
 
+        public void DeleteRange(IEnumerable<User> users)
+        {
+            throw new NotImplementedException();
+        }
+
         public User Find(Func<User, bool> predicate)
         {
             return _db.Users.Find(predicate);
@@ -37,7 +42,7 @@ namespace PhoneBook.Infrastucture.Data.Repository
 
         public IEnumerable<User> GetAll()
         {
-            var result = _db.Users.ToList();
+            var result = _db.Users;
             return result;
         }
 
@@ -45,6 +50,16 @@ namespace PhoneBook.Infrastucture.Data.Repository
         {
             var result = _db.Users.Find(id);
             return result;
+        }
+
+        public IEnumerable<User> GetByID(List<ulong> id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void RangeDelete(IEnumerable<User> ids)
+        {
+            throw new NotImplementedException();
         }
 
         public void Save()

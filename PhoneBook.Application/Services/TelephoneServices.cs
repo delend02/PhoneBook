@@ -29,14 +29,21 @@ namespace PhoneBook.Application.Services
             return _db.GetByID(ID);
         }
 
-        public IEnumerable<TelephoneBook> GetAll()
+        public List<TelephoneBook> GetAll()
         {
-            return _db.GetAll();
+            return _db.GetAll().ToList();
         }
 
-        public IEnumerable<TelephoneBook> Search(string name)
+        public void RangeDelete(List<ulong> ids)
         {
-            var result = _db.FindAll(book => book.FirstName.Contains(name));
+            var result = _db.GetByID(ids);
+            _db.DeleteRange(result);
+            _db.Save();
+        }
+
+        public List<TelephoneBook> Search(string name)
+        {
+            var result = _db.FindAll(book => book.FirstName.Contains(name)).ToList();
             return result;
         }
     }

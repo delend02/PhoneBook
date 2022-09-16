@@ -1,8 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using PhoneBook.Application.Services;
-using PhoneBook.Domain.Entity;
-using PhoneBook.Domain.Interfaces;
+using PhoneBook.Web.Mappers;
 using PhoneBook.Web.Models;
+using System.Collections.Generic;
 
 namespace PhoneBook.Web.Controllers
 {
@@ -18,7 +18,8 @@ namespace PhoneBook.Web.Controllers
         [HttpGet]
         public IActionResult Table()
         {
-            var books = _telephoneServices.GetAll();
+            var books = _telephoneServices.GetAll().ConstructToListModels();
+
             return View(books);
         }
 
@@ -29,10 +30,14 @@ namespace PhoneBook.Web.Controllers
         }
 
         [HttpPost]
-        public IActionResult Add(TelephoneDescriptionModel telephoneBook)
+        public IActionResult Add(TelephoneBookModel telephoneBook)
         {
-            _telephoneServices.Create(telephoneBook);
-            return View("Table", _telephoneServices.GetAll());
+            var resultBook = TelephoneBookMappers.ConstructToEntities(telephoneBook);
+
+            _telephoneServices.Create(resultBook);
+
+            return View("Table", _telephoneServices.GetAll().ConstructToListModels());
+
         }
 
         [HttpGet]
@@ -41,7 +46,8 @@ namespace PhoneBook.Web.Controllers
             if (!ulong.TryParse(ID, out var result))
                 return View();
 
-            var book = _telephoneServices.Get(result);
+            var book = _telephoneServices.Get(result).ConstructToModels();
+
             return View(book);
         }
 
@@ -52,7 +58,8 @@ namespace PhoneBook.Web.Controllers
                 return View();
 
             _telephoneServices.Delete(result);
-            return View("Table", _telephoneServices.GetAll());
+
+            return View("Table", _telephoneServices.GetAll().ConstructToListModels());
         }
 
         [HttpPost]
@@ -62,7 +69,17 @@ namespace PhoneBook.Web.Controllers
                 return View();
 
             _telephoneServices.Delete(result);
-            return View("Table", _telephoneServices.GetAll());
+
+            return View("Table", _telephoneServices.GetAll().ConstructToListModels());
         }
+
+        [HttpPost]
+        public IActionResult Delete(List<ulong> ID)
+        {
+            _telephoneServices.RangeDelete(ID);
+            return View("Table", _telephoneServices.GetAll().ConstructToListModels());
+        }
+
+
     }
 }
