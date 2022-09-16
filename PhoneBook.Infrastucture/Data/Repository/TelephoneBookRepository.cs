@@ -30,6 +30,16 @@ namespace PhoneBook.Infrastucture.Data.Repository
             return _db.Books.Find(predicate);
         }
 
+        public IEnumerable<TelephoneBook> GetByID(List<ulong> ids)
+        {
+
+            IEnumerable<TelephoneBook> telephoneBooks = (from book in _db.Books
+                                                         where ids.Contains(book.ID)
+                                                         select book).ToList();
+
+            return telephoneBooks;
+        }
+
         public TelephoneBook GetByID(ulong id)
         {
             var result = _db.Books.Find(id);
@@ -38,7 +48,7 @@ namespace PhoneBook.Infrastucture.Data.Repository
 
         public IEnumerable<TelephoneBook> GetAll()
         {
-            var result = _db.Books.ToList();
+            var result = _db.Books;
             return result;
         }
 
@@ -54,8 +64,13 @@ namespace PhoneBook.Infrastucture.Data.Repository
 
         public IEnumerable<TelephoneBook> FindAll(Func<TelephoneBook, bool> predicate)
         {
-            var result = _db.Books.Where(predicate);
+            var result = _db.Books.Where(predicate).ToList();
             return result;
+        }
+
+        public void DeleteRange(IEnumerable<TelephoneBook> books)
+        {
+            _db.Books.RemoveRange(books);
         }
     }
 }

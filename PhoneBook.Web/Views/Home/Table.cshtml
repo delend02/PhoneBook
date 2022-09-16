@@ -11,26 +11,36 @@
 <div>
     @if (@Model is not null)
     {
-    <p>Всего контактов: @Model.Count</p>
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Фамилия</th>
-                <th>Имя</th>
-                <th>Номер телефона</th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (var item in Model)
-            {                  
+    @using (Html.BeginForm("Delete", "Home", FormMethod.Post))
+    {
+        <div class="header-table">
+            <button class="btn" type="submit" >Удалить</button>
+            <p>Всего контактов: @Model.Count</p>
+        </div>
+        <table class="table">
+            <thead>
                 <tr>
-                    <td>@item.LastName</td>
-                    <td>@item.FirstName</td>
-                    <td><a asp-area="" asp-controller="Home" asp-action="About" asp-route-id="@item.ID">@item.NumberPhone</a></td>
+                    <th></th>
+                    <th>Фамилия</th>
+                    <th>Имя</th>
+                    <th>Номер телефона</th>
                 </tr>
-            }
-        </tbody>
-    </table>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {                  
+                    <tr>
+                        <td>
+                            <input name="ID" type="checkbox" indeterminate="true" value="@item.ID"/>
+                        </td>
+                        <td>@item.LastName</td>
+                        <td>@item.FirstName</td>
+                        <td><a asp-area="" asp-controller="Home" asp-action="About" asp-route-id="@item.ID">@item.NumberPhone</a></td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
     }
     else
     {
