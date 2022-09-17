@@ -16,9 +16,7 @@ else
 {
     <div class="section-name">
         <h1 class="names-h1">@Model.LastName @Model.FirstName @Model.SurName</h1>
-        <form asp-controller="Home" asp-action="Correct" asp-route-id="@Model.ID">
-            <button class="btn">Редактировать</button>
-        </form>
+        <a asp-action="Edit" asp-controller="Home" class="btn">Редактировать</a>
     </div>
     <div class="section-about">
         <h3>Адрес</h3>

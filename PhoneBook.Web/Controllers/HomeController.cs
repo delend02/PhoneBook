@@ -73,13 +73,24 @@ namespace PhoneBook.Web.Controllers
             return View("Table", _telephoneServices.GetAll().ConstructToListModels());
         }
 
-        [HttpPost]
+        [HttpDelete]
         public IActionResult Delete(List<ulong> ID)
         {
             _telephoneServices.RangeDelete(ID);
             return View("Table", _telephoneServices.GetAll().ConstructToListModels());
         }
 
+        [HttpPut]
+        public IActionResult Remove(TelephoneBookModel telephoneBookModel)
+        {
 
+            return View("Table", _telephoneServices.GetAll().ConstructToListModels());
+        }
+
+        [HttpGet]
+        public IActionResult Edit(TelephoneBookModel telephoneBookModel)
+        {
+            return View(telephoneBookModel);
+        }
     }
 }
