@@ -88,9 +88,9 @@ namespace PhoneBook.Web.Controllers
         }
 
         [HttpGet]
-        public IActionResult Edit(TelephoneBookModel telephoneBookModel)
+        public IActionResult Redact(TelephoneBookModel telephoneBookModel)
         {
-            return View(telephoneBookModel);
+            return View();
         }
     }
 }
