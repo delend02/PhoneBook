@@ -7,8 +7,13 @@
 }
 
 <div class="edit-container">
-    @using (Html.BeginForm("Remove", "Home", FormMethod.Post))
+    @using (Html.BeginForm("Change", "Home", FormMethod.Post))
     {
-       
+        @Html.TextBoxFor(model => model.FirstName, new {@class = "input-info", @placeholder = "Имя"})
+        @Html.TextBoxFor(model => model.LastName, new {@class = "input-info", @placeholder = "Фамилия"})
+        @Html.TextBoxFor(model => model.SurName, new {@class = "input-info", @placeholder = "Отчество"})
+        @Html.TextBoxFor(model => model.NumberPhone, new {@class = "input-info", @placeholder = "Номер телефона"})
+        @Html.TextBoxFor(model => model.Address, new {@class = "input-info", @placeholder = "Адресс"})
+        <input type="submit" class="btn" placeholder="Сохранить"/>
     }
 </div>
