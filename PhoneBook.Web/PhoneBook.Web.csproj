@@ -5,7 +5,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Content Remove="Views\Home\Redact.cshtml" />
     <Content Remove="wwwroot\search.png" />
     <Content Remove="wwwroot\src\search.png" />
   </ItemGroup>
@@ -19,10 +18,6 @@
   <ItemGroup>
     <Resource Include="wwwroot\search.png" />
     <Resource Include="wwwroot\src\search.png" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <None Include="Views\Home\Redact.cshtml" />
   </ItemGroup>
 
 </Project>

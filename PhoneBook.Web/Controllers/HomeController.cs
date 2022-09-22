@@ -73,14 +73,14 @@ namespace PhoneBook.Web.Controllers
             return View("Table", _telephoneServices.GetAll().ConstructToListModels());
         }
 
-        [HttpDelete]
+        [HttpPost]
         public IActionResult Delete(List<ulong> ID)
         {
             _telephoneServices.RangeDelete(ID);
             return View("Table", _telephoneServices.GetAll().ConstructToListModels());
         }
 
-        [HttpPut]
+        [HttpPost]
         public IActionResult Remove(TelephoneBookModel telephoneBookModel)
         {
 
@@ -88,9 +88,15 @@ namespace PhoneBook.Web.Controllers
         }
 
         [HttpGet]
-        public IActionResult Redact(TelephoneBookModel telephoneBookModel)
+        public IActionResult Redact(TelephoneBookModel model)
         {
-            return View();
+            return View(model);
+        }
+
+        [HttpPost]
+        public IActionResult Change(TelephoneBookModel model)
+        {
+            return View("Table", _telephoneServices.GetAll().ConstructToListModels());
         }
     }
 }

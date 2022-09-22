@@ -228,3 +228,14 @@ a {
     font-weight: 400;
 }
 
+.edit-container {
+    display: block;
+    margin: 150px;
+}
+
+.edit-container .btn {
+    display: block;
+    color: black;
+    width: 100%;
+    font: 1.5em 'Open Sans', sans-serif;
+}
