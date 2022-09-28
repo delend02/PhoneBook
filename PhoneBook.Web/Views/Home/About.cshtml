@@ -16,7 +16,7 @@ else
 {
     <div class="section-name">
         <h1 class="names-h1">@Model.LastName @Model.FirstName @Model.SurName</h1>
-        <a asp-area="" asp-action="Redact" asp-controller="Home" asp- class="btn">Редактировать</a>
+        <a asp-area="" asp-action="Redact" asp-controller="Home" asp-route-id="@Model.ID" class="btn">Редактировать</a>
     </div>
     <div class="section-about">
         <h3>Адрес</h3>

@@ -11,6 +11,7 @@ namespace PhoneBook.Web.Mappers
         {
             return new TelephoneBook
             {
+                ID = telephoneBookModel.ID,
                 Address = telephoneBookModel.Address,
                 FirstName = telephoneBookModel.FirstName,
                 LastName = telephoneBookModel.LastName,
@@ -40,6 +41,7 @@ namespace PhoneBook.Web.Mappers
         {
             return new TelephoneBookModel
             {
+                ID = telephoneBook.ID,
                 Address = telephoneBook.Address,
                 FirstName = telephoneBook.FirstName,
                 LastName = telephoneBook.LastName,

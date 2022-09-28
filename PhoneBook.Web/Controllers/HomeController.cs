@@ -52,45 +52,21 @@ namespace PhoneBook.Web.Controllers
         }
 
         [HttpPost]
-        public IActionResult AboutDelete(string ID)
-        {
-            if (!ulong.TryParse(ID, out var result))
-                return View();
-
-            _telephoneServices.Delete(result);
-
-            return View("Table", _telephoneServices.GetAll().ConstructToListModels());
-        }
-
-        [HttpPost]
-        public IActionResult Correct(string ID)
-        {
-            if (!ulong.TryParse(ID, out var result))
-                return View();
-
-            _telephoneServices.Delete(result);
-
-            return View("Table", _telephoneServices.GetAll().ConstructToListModels());
-        }
-
-        [HttpPost]
         public IActionResult Delete(List<ulong> ID)
         {
             _telephoneServices.RangeDelete(ID);
             return View("Table", _telephoneServices.GetAll().ConstructToListModels());
         }
 
-        [HttpPost]
-        public IActionResult Remove(TelephoneBookModel telephoneBookModel)
-        {
-
-            return View("Table", _telephoneServices.GetAll().ConstructToListModels());
-        }
-
         [HttpGet]
-        public IActionResult Redact(TelephoneBookModel model)
+        public IActionResult Redact([FromRoute] string ID)
         {
-            return View(model);
+            if (!ulong.TryParse(ID, out var result))
+                return View();
+
+            var book = _telephoneServices.Get(result).ConstructToModels();
+
+            return View(book);
         }
 
         [HttpPost]
