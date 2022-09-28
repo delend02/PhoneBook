@@ -9,11 +9,12 @@
 <div class="edit-container">
     @using (Html.BeginForm("Change", "Home", FormMethod.Post))
     {
-        @Html.TextBoxFor(model => model.FirstName, new {@class = "input-info", @placeholder = "Имя"})
-        @Html.TextBoxFor(model => model.LastName, new {@class = "input-info", @placeholder = "Фамилия"})
-        @Html.TextBoxFor(model => model.SurName, new {@class = "input-info", @placeholder = "Отчество"})
-        @Html.TextBoxFor(model => model.NumberPhone, new {@class = "input-info", @placeholder = "Номер телефона"})
-        @Html.TextBoxFor(model => model.Address, new {@class = "input-info", @placeholder = "Адресс"})
+        @Html.TextBoxFor(model => model.FirstName, new {@class = "input-info", @placeholder = @Model.FirstName})
+        @Html.TextBoxFor(model => model.LastName, new {@class = "input-info", @placeholder = @Model.LastName})
+        @Html.TextBoxFor(model => model.SurName, new {@class = "input-info", @placeholder = @Model.SurName})
+        @Html.TextBoxFor(model => model.NumberPhone, new {@class = "input-info", @placeholder = @Model.NumberPhone})
+        @Html.TextBoxFor(model => model.Address, new {@class = "input-info", @placeholder = @Model.Address})
         <input type="submit" class="btn" placeholder="Сохранить"/>
     }
+    <a asp-area="" asp-action="Delete" asp-controller="Home" asp-route-id="@Model.ID" class="btn">Редактировать</a>
 </div>
