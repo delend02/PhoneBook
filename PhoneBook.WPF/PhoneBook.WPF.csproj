@@ -13,4 +13,8 @@
     <Page Remove="Models\**" />
   </ItemGroup>
 
+  <ItemGroup>
+    <PackageReference Include="HamburgerMenu" Version="0.1.0" />
+  </ItemGroup>
+
 </Project>

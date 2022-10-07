@@ -11,9 +11,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PhoneBook.Infrastucture", "
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PhoneBook.Web", "PhoneBook.Web\PhoneBook.Web.csproj", "{06626328-7D6A-4602-B77D-5026DB5055BE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PhoneBook.API", "PhoneBook.API\PhoneBook.API.csproj", "{1CE5A24D-E04A-4189-AAE8-D593FB936058}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PhoneBook.API", "PhoneBook.API\PhoneBook.API.csproj", "{1CE5A24D-E04A-4189-AAE8-D593FB936058}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PhoneBook.WPF", "PhoneBook.WPF\PhoneBook.WPF.csproj", "{9E517A0D-745C-46ED-A722-E6052DFA0932}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PhoneBook.WPF", "PhoneBook.WPF\PhoneBook.WPF.csproj", "{9E517A0D-745C-46ED-A722-E6052DFA0932}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
