@@ -14,7 +14,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="HamburgerMenu" Version="0.1.0" />
+    <Folder Include="Views\Resource\" />
   </ItemGroup>
 
 </Project>
