@@ -13,8 +13,4 @@
     <Page Remove="Models\**" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Views\Resource\" />
-  </ItemGroup>
-
 </Project>
