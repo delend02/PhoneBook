@@ -9,7 +9,6 @@
         MinHeight="800" 
         MinWidth="1500"
         WindowStyle="SingleBorderWindow">
-
     <Window.DataContext>
         <local:MainWindowViewModel/>
     </Window.DataContext>
@@ -45,7 +44,7 @@
                 <Button Background="#1111"
                     BorderBrush="#1111"
                     Margin="0 60 0 5"
-                    Command="">
+                    Command="{Binding Add}">
                     <Button.ToolTip>
                         <TextBlock Text="Добавить телефон"/>
                     </Button.ToolTip>
@@ -76,7 +75,7 @@
                 <Button Background="#1111"
                             BorderBrush="#1111"
                             Margin="0 5"
-                            Command="">
+                            Command="{Binding Table}">
                     <Button.ToolTip>
                         <TextBlock Text="Все контакты"/>
                     </Button.ToolTip>
@@ -111,7 +110,7 @@
                 <Button Background="#1111"
                     BorderBrush="#1111"
                     Margin="0 5"
-                    Command="">
+                    Command="{Binding Search}">
                     <Button.ToolTip>
                         <TextBlock Text="Найти контакт"/>
                     </Button.ToolTip>
@@ -179,5 +178,21 @@
                 </Button>
             </StackPanel>
         </Grid>
+        
+        <Frame Grid.ColumnSpan="3"
+               Grid.RowSpan="3"
+               Margin="70 60 0 0"
+               Source="Pages/Add.xaml"/>
+
+        <Frame Grid.ColumnSpan="3"
+               Grid.RowSpan="3"
+               Margin="70 60 0 0"
+               Source="Pages/Table.xaml"/>
+
+        <Frame Grid.ColumnSpan="3"
+               Grid.RowSpan="3"
+               Margin="70 60 0 0"
+               Source="Pages/Search.xaml"/>
+
     </Grid>
 </Window>
