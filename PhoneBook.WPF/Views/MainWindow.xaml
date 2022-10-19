@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PhoneBook.WPF.ViewModels"
         mc:Ignorable="d"
-        Title="MainWindow" 
+        Title="{Binding Title}" 
         MinHeight="800" 
         MinWidth="1500"
         WindowStyle="SingleBorderWindow">
@@ -43,7 +43,7 @@
             <StackPanel Grid.Row="0">
                 <Button Background="#1111"
                     BorderBrush="#1111"
-                    Margin="0 60 0 5"
+                    Margin="8 60 8 8"
                     Command="{Binding Add}">
                     <Button.ToolTip>
                         <TextBlock Text="Добавить телефон"/>
@@ -74,7 +74,7 @@
                 </Button>
                 <Button Background="#1111"
                             BorderBrush="#1111"
-                            Margin="0 5"
+                            Margin="8"
                             Command="{Binding Table}">
                     <Button.ToolTip>
                         <TextBlock Text="Все контакты"/>
@@ -109,7 +109,7 @@
                 </Button>
                 <Button Background="#1111"
                     BorderBrush="#1111"
-                    Margin="0 5"
+                    Margin="8"
                     Command="{Binding Search}">
                     <Button.ToolTip>
                         <TextBlock Text="Найти контакт"/>
@@ -143,8 +143,8 @@
             <StackPanel Grid.Row="1">
                 <Button Background="#1111"
                         BorderBrush="#1111"
-                        Margin="0 0 0 25"
-                        Command=""
+                        Margin="8 8 8 26"
+                        Command="{Binding Exit}"
                         Grid.Row="1">
                     <Button.ToolTip>
                         <TextBlock Text="Выйти"/>
@@ -178,21 +178,5 @@
                 </Button>
             </StackPanel>
         </Grid>
-        
-        <Frame Grid.ColumnSpan="3"
-               Grid.RowSpan="3"
-               Margin="70 60 0 0"
-               Source="Pages/Add.xaml"/>
-
-        <Frame Grid.ColumnSpan="3"
-               Grid.RowSpan="3"
-               Margin="70 60 0 0"
-               Source="Pages/Table.xaml"/>
-
-        <Frame Grid.ColumnSpan="3"
-               Grid.RowSpan="3"
-               Margin="70 60 0 0"
-               Source="Pages/Search.xaml"/>
-
     </Grid>
 </Window>
