@@ -2,26 +2,15 @@
 
   <PropertyGroup>
     <TargetFramework>net6.0</TargetFramework>
-    <ImplicitUsings>enable</ImplicitUsings>
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="Controllers\**" />
-    <Compile Remove="Middleware\**" />
-    <Compile Remove="Phone\**" />
-    <Content Remove="Controllers\**" />
-    <Content Remove="Middleware\**" />
-    <Content Remove="Phone\**" />
-    <EmbeddedResource Remove="Controllers\**" />
-    <EmbeddedResource Remove="Middleware\**" />
-    <EmbeddedResource Remove="Phone\**" />
-    <None Remove="Controllers\**" />
-    <None Remove="Middleware\**" />
-    <None Remove="Phone\**" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="5.6.3" />
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.2.3" />
+    <Folder Include="Controllers\" />
+    <Folder Include="Models\" />
   </ItemGroup>
 
 </Project>
