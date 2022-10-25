@@ -7,6 +7,7 @@ namespace PhoneBook.Application.Services
         List<TelephoneBook> Search(string name);
         List<TelephoneBook> GetAll();
         TelephoneBook Get(ulong ID);
+        void Update(TelephoneBook telephoneBook);
         void Delete(ulong id);
         void RangeDelete(List<ulong> ids);
         void Create(TelephoneBook telephoneBooks);

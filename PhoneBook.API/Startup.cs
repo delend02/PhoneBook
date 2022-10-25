@@ -21,6 +21,7 @@ namespace PhoneBook.API
         {
             var mssqlConnection = Configuration.GetConnectionString("mssqlconnection");
             services.DatabaseConnected(mssqlConnection);
+            services.AddEntityServices();
             services.AddControllers();
         }
 

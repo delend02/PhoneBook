@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using PhoneBook.Application.Services;
+using PhoneBook.Domain.Entity;
 
 namespace PhoneBook.API.Controllers
 {
@@ -15,33 +16,36 @@ namespace PhoneBook.API.Controllers
         }
 
         [HttpPost]
-        public IActionResult Create()
+        public IActionResult Create([FromBody] TelephoneBook telephoneBook)
         {
+            _telephoneServices.Create(telephoneBook);
             return Ok();
         }
 
         [HttpPost]
-        public IActionResult Update()
+        public IActionResult Update([FromBody] TelephoneBook telephoneBook)
         {
+            _telephoneServices.Update(telephoneBook);
             return Ok();
         }
 
         [HttpPost]
-        public IActionResult Delete()
+        public IActionResult Delete([FromQuery] ulong id)
         {
+            _telephoneServices.Delete(id);
             return Ok();
         }
 
-        [HttpGet("ID")]
-        public IActionResult GetByID()
+        [HttpGet]
+        public IActionResult GetByID([FromQuery] ulong id)
         {
-            return Ok();
+            return Ok(_telephoneServices.Get(id));
         }
 
+        [HttpGet]
         public IActionResult GetAll()
-        {
-            return Ok();
+        {           
+            return Ok(_telephoneServices.GetAll());
         }
-
     }
 }
