@@ -1,5 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using PhoneBook.Application.Services;
+using PhoneBook.Application.Services.TelephoneServices;
 using PhoneBook.Web.Mappers;
 using PhoneBook.Web.Models;
 using System.Collections.Generic;
@@ -8,9 +8,9 @@ namespace PhoneBook.Web.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ITelephoneServices _telephoneServices;
+        private readonly ITelephoneService _telephoneServices;
 
-        public HomeController(ITelephoneServices telephoneServices)
+        public HomeController(ITelephoneService telephoneServices)
         {
             _telephoneServices = telephoneServices;
         }

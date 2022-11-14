@@ -6,23 +6,23 @@ namespace PhoneBook.Infrastucture.Data.Repository
 {
     public class UserRepository : IRepository<User>
     {
-        private UserContext _db;
+        private PhoneContext _db;
 
-        public UserRepository(UserContext db)
+        public UserRepository(PhoneContext db)
         {
             _db = db;
         }
 
         public void Create(User item)
         {
-            _db.Users.Add(item);
+            _db.User.Add(item);
         }
 
         public void Delete(ulong id)
         {
-            var user = _db.Users.Find(id);
+            var user = _db.User.Find(id);
             if (user is not null)
-                _db.Users.Remove(user);
+                _db.User.Remove(user);
         }
 
         public void DeleteRange(IEnumerable<User> users)
@@ -32,7 +32,7 @@ namespace PhoneBook.Infrastucture.Data.Repository
 
         public User Find(Func<User, bool> predicate)
         {
-            return _db.Users.Find(predicate);
+            return _db.User.Find(predicate);
         }
 
         public IEnumerable<User> FindAll(Func<User, bool> predicate)
@@ -42,13 +42,13 @@ namespace PhoneBook.Infrastucture.Data.Repository
 
         public IEnumerable<User> GetAll()
         {
-            var result = _db.Users;
+            var result = _db.User;
             return result;
         }
 
         public User GetByID(ulong id)
         {
-            var result = _db.Users.Find(id);
+            var result = _db.User.Find(id);
             return result;
         }
 
@@ -69,7 +69,11 @@ namespace PhoneBook.Infrastucture.Data.Repository
 
         public void Update(User item)
         {
-            _db.Users.Update(item);
+            _db.User.Update(item);
+        }
+        public void Dispose()
+        {
+
         }
     }
 }

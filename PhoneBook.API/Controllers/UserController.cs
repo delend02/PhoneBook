@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using PhoneBook.Application.Services;
+using PhoneBook.Application.Services.UserServices;
+using PhoneBook.Domain.Entity;
 
 namespace PhoneBook.API.Controllers
 {
@@ -7,35 +8,39 @@ namespace PhoneBook.API.Controllers
     [ApiController]
     public class UserController : ControllerBase
     {
-        private readonly IUserServices _userServices;
+        private readonly IUserService _userServices;
 
-        public UserController(IUserServices userServices)
+        public UserController(IUserService userServices)
         {
-
+            _userServices = userServices;
         }
 
         [HttpPost]
-        public IActionResult Create()
+        public IActionResult Create([FromBody] User user)
         {
-            return Ok();
+            var result = _userServices.Create(user);
+            return Ok(result);
         }
 
         [HttpPost]
-        public IActionResult Update()
+        public IActionResult Update([FromBody] User user)
         {
-            return Ok();
+            var result = _userServices.Update(user);
+            return Ok(result);
         }
 
         [HttpDelete]
-        public IActionResult Delete()
+        public IActionResult Delete([FromRoute] ulong id)
         {
-            return Ok();
+            var result = _userServices.Delete(id);
+            return Ok(result);
         }
 
         [HttpGet]
-        public IActionResult GetByID()
+        public IActionResult GetByID([FromRoute] ulong id)
         {
-            return Ok();
+            var result = _userServices.Get(id);
+            return Ok(result);
         }
     }
 }
