@@ -72,5 +72,10 @@ namespace PhoneBook.Infrastucture.Data.Repository
         {
             _db.Books.RemoveRange(books);
         }
+
+        public void Dispose()
+        {
+            
+        }
     }
 }

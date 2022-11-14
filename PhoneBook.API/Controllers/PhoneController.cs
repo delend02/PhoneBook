@@ -1,5 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using PhoneBook.Application.Services;
+using PhoneBook.Application.Services.TelephoneServices;
 using PhoneBook.Domain.Entity;
 
 namespace PhoneBook.API.Controllers
@@ -8,9 +8,9 @@ namespace PhoneBook.API.Controllers
     [ApiController]
     public class PhoneController : ControllerBase
     {
-        private readonly ITelephoneServices _telephoneServices;
+        private readonly ITelephoneService _telephoneServices;
 
-        public PhoneController(ITelephoneServices telephoneServices)
+        public PhoneController(ITelephoneService telephoneServices)
         {
             _telephoneServices = telephoneServices;
         }

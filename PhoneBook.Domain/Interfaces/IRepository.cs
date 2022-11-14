@@ -1,6 +1,6 @@
 ﻿namespace PhoneBook.Domain.Interfaces
 {
-    public interface IRepository<T>
+    public interface IRepository<T> : IDisposable
         where T : class
     {
         IEnumerable<T> GetAll();

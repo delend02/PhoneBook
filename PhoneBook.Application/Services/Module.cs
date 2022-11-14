@@ -1,5 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
+using PhoneBook.Application.Services.TelephoneServices;
+using PhoneBook.Application.Services.UserServices;
 using PhoneBook.Domain.Entity;
 using PhoneBook.Domain.Interfaces;
 using PhoneBook.Infrastucture.Data.Context;
@@ -12,7 +14,7 @@ namespace PhoneBook.Application.Services
         public static IServiceCollection DatabaseConnected(this IServiceCollection services, string connectionDB)
         {
             services.AddScoped<IRepository<TelephoneBook>, TelephoneBookRepository>();
-            //services.AddScoped<IRepository<User>, UserRepository>();
+            services.AddScoped<IRepository<User>, UserRepository>();
             services.AddDbContext<PhoneContext>(options => 
                     options.UseSqlServer(connectionDB, 
                             sqlServerOptionsAction: sqlserverOptions =>
@@ -25,8 +27,8 @@ namespace PhoneBook.Application.Services
 
         public static IServiceCollection AddEntityServices(this IServiceCollection services)
         {
-            services.AddScoped<ITelephoneServices, TelephoneService>();
-            services.AddScoped<IUserServices, UserServices>();
+            services.AddTransient<ITelephoneService, TelephoneService>();
+            services.AddTransient<IUserService, UserService>();
             return services;
         }
 

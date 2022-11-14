@@ -2,9 +2,9 @@
 using PhoneBook.Domain.Entity;
 using PhoneBook.Domain.Interfaces;
 
-namespace PhoneBook.Application.Services
+namespace PhoneBook.Application.Services.TelephoneServices
 {
-    public class TelephoneService : ITelephoneServices
+    public class TelephoneService : ITelephoneService
     {
         private readonly IRepository<TelephoneBook> _db;
         private readonly ILogger<TelephoneService> _logger;
@@ -25,29 +25,33 @@ namespace PhoneBook.Application.Services
             return _db.GetAll().ToList();
         }
 
-        public void Create(TelephoneBook telephoneBooks)
+        public TelephoneBook Create(TelephoneBook telephoneBooks)
         {
             _db.Create(telephoneBooks);
             _db.Save();
+            return telephoneBooks;
         }
 
-        public void Update(TelephoneBook telephoneBook)
+        public TelephoneBook Update(TelephoneBook telephoneBook)
         {
             _db.Update(telephoneBook);
+            return telephoneBook;
         }
 
-        public void Delete(ulong id)
+        public TelephoneBook Delete(ulong id)
         {
             _db.Delete(id);
             _db.Save();
+            return null;
         }
 
 
-        public void RangeDelete(List<ulong> ids)
+        public IEnumerable<TelephoneBook> RangeDelete(List<ulong> ids)
         {
             var result = _db.GetByID(ids);
             _db.DeleteRange(result);
             _db.Save();
+            return null;
         }
 
         public List<TelephoneBook> Search(string name)
