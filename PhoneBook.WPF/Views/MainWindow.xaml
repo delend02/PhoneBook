@@ -13,10 +13,24 @@
         <local:MainWindowViewModel/>
     </Window.DataContext>
 
+    <Window.Resources>
+        <Style TargetType="Button" x:Key="btnStyle">
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="#1111"/>
+                </Trigger>
+            </Style.Triggers>
+            <Setter Property="Height" Value="50"/>
+            <Setter Property="Width" Value="50"/>
+            <Setter Property="Background" Value="#1111"/>
+            <Setter Property="BorderBrush" Value="#1111"/>
+            <Setter Property="Margin" Value="8"/>
+        </Style>
+    </Window.Resources>
+    
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="auto"/>
-            <ColumnDefinition/>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
@@ -41,10 +55,9 @@
                 <RowDefinition Height="auto"/>
             </Grid.RowDefinitions>
             <StackPanel Grid.Row="0">
-                <Button Background="#1111"
-                    BorderBrush="#1111"
-                    Margin="8 60 8 8"
-                    Command="{Binding Add}">
+                <Button Style="{StaticResource btnStyle}"
+                        Margin="8 60 8 8"
+                        Command="{Binding Add}">
                     <Button.ToolTip>
                         <TextBlock Text="Добавить телефон"/>
                     </Button.ToolTip>
@@ -72,10 +85,8 @@
                         </Rectangle>
                     </Viewbox>
                 </Button>
-                <Button Background="#1111"
-                            BorderBrush="#1111"
-                            Margin="8"
-                            Command="{Binding Table}">
+                <Button Style="{StaticResource btnStyle}"
+                        Command="{Binding Table}">
                     <Button.ToolTip>
                         <TextBlock Text="Все контакты"/>
                     </Button.ToolTip>
@@ -107,9 +118,7 @@
                         </Rectangle>
                     </Viewbox>
                 </Button>
-                <Button Background="#1111"
-                    BorderBrush="#1111"
-                    Margin="8"
+                <Button  Style="{StaticResource btnStyle}"
                     Command="{Binding Search}">
                     <Button.ToolTip>
                         <TextBlock Text="Найти контакт"/>
@@ -141,8 +150,7 @@
                 </Button>
             </StackPanel>
             <StackPanel Grid.Row="1">
-                <Button Background="#1111"
-                        BorderBrush="#1111"
+                <Button Style="{StaticResource btnStyle}"
                         Margin="8 8 8 26"
                         Command="{Binding Exit}"
                         Grid.Row="1">
@@ -178,5 +186,20 @@
                 </Button>
             </StackPanel>
         </Grid>
+
+        <Frame Grid.RowSpan="3"
+               Grid.Column="1"
+               Margin="0 60 0 0">
+        </Frame>
+
+        <Frame Grid.RowSpan="3"
+               Grid.Column="1"
+               Margin="0 60 0 0">
+        </Frame>
+
+        <Frame Grid.RowSpan="3"
+               Grid.Column="1"
+               Margin="0 60 0 0">
+        </Frame>
     </Grid>
 </Window>
