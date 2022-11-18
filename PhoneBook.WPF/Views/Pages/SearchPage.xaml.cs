@@ -3,11 +3,11 @@
 namespace PhoneBook.WPF.Views.Pages
 {
     /// <summary>
-    /// Логика взаимодействия для AddPage.xaml
+    /// Логика взаимодействия для SearchPage.xaml
     /// </summary>
-    public partial class AddPage : Page
+    public partial class SearchPage : Page
     {
-        public AddPage()
+        public SearchPage()
         {
             InitializeComponent();
         }
