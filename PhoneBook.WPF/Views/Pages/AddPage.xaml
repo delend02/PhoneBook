@@ -4,11 +4,93 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:PhoneBook.WPF.Views.Pages"
-      mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800"
-      Title="AddPage">
 
-    <Grid>
+      Title="Добавить телефон">
+
+    <Page.Resources>
+        <Style x:Key="StyleTextBlockPanel" TargetType="TextBlock">
+            <Setter Property="Margin" Value="0 0 0 5"/>
+            <Setter Property="Width" Value="300"/>
+            <Setter Property="FontSize" Value="28"/>
+        </Style>
+
+        <Style x:Key="StyleTextBoxPanel" TargetType="TextBox">
+            <Setter Property="Margin" Value="5 0 0 5"/>
+            <Setter Property="MinWidth" Value="100"/>
+            
+            <Setter Property="FontSize" Value="28"/>
+        </Style>
+
+        <Style x:Key="StyleButton" TargetType="Button">
+            <Setter Property="Background" Value="#bfbfbf"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="FontSize" Value="20"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border Background="{TemplateBinding Background}"
+                                CornerRadius="25"
+                                Padding="14 10"
+                                >
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Page.Resources>
+    
+    <Grid Background="AliceBlue" Margin="0,4,0,-4">
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        
+        <StackPanel Margin="10"
+                    HorizontalAlignment="Left"
+                    VerticalAlignment="Center">
+            <TextBlock Text="Имя:"
+                       Style="{StaticResource StyleTextBlockPanel}"/>
+            <TextBlock Text="Фамилия:"
+                       Style="{StaticResource StyleTextBlockPanel}"/>
+            <TextBlock Text="Отчество:"
+                       Style="{StaticResource StyleTextBlockPanel}"/>
+            <TextBlock Text="Номер телефона:"
+                       Style="{StaticResource StyleTextBlockPanel}"/>
+            <TextBlock Text="Адресс:"
+                       Style="{StaticResource StyleTextBlockPanel}"/>
+
+        </StackPanel>
+
+        <StackPanel Grid.Column="1"
+                    Margin="10"
+                    HorizontalAlignment="Stretch"
+                    VerticalAlignment="Center">
+            <TextBox Text="{Binding FisrtName}"
+                     Style="{StaticResource StyleTextBoxPanel}"/>
+            <TextBox Text="{Binding LastName}"
+                     Style="{StaticResource StyleTextBoxPanel}"/>
+            <TextBox Text="{Binding SurName}"
+                     Style="{StaticResource StyleTextBoxPanel}"/>
+            <TextBox Text="{Binding Adress}"
+                     Style="{StaticResource StyleTextBoxPanel}"/>
+            <TextBox Text="{Binding NumberPhone}"
+                     Style="{StaticResource StyleTextBoxPanel}"/>
+        </StackPanel>
+
+        <Button Grid.Row="1"
+                Grid.ColumnSpan="2"
+                Content="Сохранить"
+                Style="{StaticResource StyleButton}"
+                Margin="0 0 0 20"
+                HorizontalAlignment="Center">
+        </Button>
         
     </Grid>
 </Page>
