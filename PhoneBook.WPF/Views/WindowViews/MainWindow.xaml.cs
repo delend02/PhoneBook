@@ -1,10 +1,7 @@
 ﻿using System.Windows;
 
-namespace PhoneBook.WPF.Views
+namespace PhoneBook.WPF.Views.WindowViews
 {
-    /// <summary>
-    /// Interaction logic for MainWindow.xaml
-    /// </summary>
     public partial class MainWindow : Window
     {
         public MainWindow()

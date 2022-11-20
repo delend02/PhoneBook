@@ -2,11 +2,11 @@
 using System.Collections.Generic;
 using System.Windows.Input;
 
-namespace PhoneBook.WPF.ViewModels
+namespace PhoneBook.WPF.ViewModels.WindowViewModel
 {
-    internal class MainWindowViewModel : ViewModel
+    internal class MainWindowViewModel : WindowViewModelBase
     {
-        const string SourcePathPage = "Pages"; 
+        const string SourcePathPage = "../PageViews";
         const string AddPageSource = $"{SourcePathPage}/AddPage.xaml";
         const string SearchPageSource = $"{SourcePathPage}/SearchPage.xaml";
 
@@ -23,7 +23,7 @@ namespace PhoneBook.WPF.ViewModels
 
         private void OnExit(object p)
         {
-            
+
         }
 
         private bool CanExit(object p) => true;
@@ -36,7 +36,7 @@ namespace PhoneBook.WPF.ViewModels
         }
 
         private bool CanAdd(object p) => true;
-        
+
         public ICommand Search { get; }
 
         private void OnSearch(object p)
@@ -67,7 +67,7 @@ namespace PhoneBook.WPF.ViewModels
         private string _textHeader;
 
         public string TextHeader
-        { 
+        {
             get => _textHeader;
             set => Set(ref _textHeader, value);
         }
