@@ -1,10 +1,7 @@
 ﻿using System.Windows.Controls;
 
-namespace PhoneBook.WPF.Views.Pages
+namespace PhoneBook.WPF.Views.PageViews
 {
-    /// <summary>
-    /// Логика взаимодействия для SearchPage.xaml
-    /// </summary>
     public partial class SearchPage : Page
     {
         public SearchPage()

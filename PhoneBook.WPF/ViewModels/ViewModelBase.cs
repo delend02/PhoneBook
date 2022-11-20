@@ -3,7 +3,7 @@ using System.Runtime.CompilerServices;
 
 namespace PhoneBook.WPF.ViewModels
 {
-    internal abstract class ViewModel : INotifyPropertyChanged
+    internal abstract class ViewModelBase : INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler? PropertyChanged;
 
