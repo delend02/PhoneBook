@@ -8,6 +8,10 @@
       d:DesignHeight="450" d:DesignWidth="800"
       Title="ContactPage">
 
+    <Page.DataContext>
+        <local:ContactPageViewModel/>
+    </Page.DataContext>
+    
     <Grid>
         
     </Grid>

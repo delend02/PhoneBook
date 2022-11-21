@@ -6,6 +6,10 @@
       xmlns:local="clr-namespace:PhoneBook.WPF.ViewModels.PageViewModel"
       Title="Добавить телефон">
 
+    <Page.DataContext>
+        <local:AddPageViewModel/>
+    </Page.DataContext>
+
     <Page.Resources>
         <Style x:Key="StyleTextBlockPanel" TargetType="TextBlock">
             <Setter Property="Margin" Value="0 0 0 5"/>
@@ -91,6 +95,7 @@
         <Button Grid.Row="1"
                 Grid.ColumnSpan="2"
                 Content="Сохранить"
+                Command="{Binding Save}"
                 Style="{StaticResource StyleButton}"
                 Margin="0 0 0 20"
                 HorizontalAlignment="Center">

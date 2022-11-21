@@ -6,10 +6,6 @@ namespace PhoneBook.WPF.ViewModels.WindowViewModel
 {
     internal class MainWindowViewModel : WindowViewModelBase
     {
-        const string SourcePathPage = "../PageViews";
-        const string AddPageSource = $"{SourcePathPage}/AddPage.xaml";
-        const string SearchPageSource = $"{SourcePathPage}/SearchPage.xaml";
-
         public MainWindowViewModel() : base()
         {
             Add = new LamdaCommand(OnAdd, CanAdd);
@@ -32,7 +28,7 @@ namespace PhoneBook.WPF.ViewModels.WindowViewModel
 
         private void OnAdd(object p)
         {
-            SourcePage = AddPageSource;
+            GoToPage(AddPageSource);
         }
 
         private bool CanAdd(object p) => true;
@@ -41,7 +37,7 @@ namespace PhoneBook.WPF.ViewModels.WindowViewModel
 
         private void OnSearch(object p)
         {
-            SourcePage = SearchPageSource;
+            GoToPage(SearchPageSource);
         }
 
         private bool CanSearch(object p) => true;
@@ -55,14 +51,6 @@ namespace PhoneBook.WPF.ViewModels.WindowViewModel
 
         private bool CanTable(object p) => true;
         #endregion
-
-        private string _sourcePage;
-
-        public string SourcePage
-        {
-            get => _sourcePage;
-            set => Set(ref _sourcePage, value);
-        }
 
         private string _textHeader;
 
