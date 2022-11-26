@@ -18,8 +18,8 @@ namespace PhoneBook.API.Controllers
         [HttpPost]
         public IActionResult Create([FromBody] TelephoneBook telephoneBook)
         {
-            _telephoneServices.Create(telephoneBook);
-            return Ok();
+            var resultTelephoneBook = _telephoneServices.Create(telephoneBook);
+            return Ok(resultTelephoneBook);
         }
 
         [HttpPost]
@@ -29,15 +29,15 @@ namespace PhoneBook.API.Controllers
             return Ok();
         }
 
-        [HttpPost]
-        public IActionResult Delete([FromQuery] ulong id)
+        [HttpPost("{id}")]
+        public IActionResult Delete([FromRoute] ulong id)
         {
             _telephoneServices.Delete(id);
             return Ok();
         }
 
-        [HttpGet]
-        public IActionResult GetByID([FromQuery] ulong id)
+        [HttpGet("{id}")]
+        public IActionResult GetByID([FromRoute] ulong id)
         {
             return Ok(_telephoneServices.Get(id));
         }
