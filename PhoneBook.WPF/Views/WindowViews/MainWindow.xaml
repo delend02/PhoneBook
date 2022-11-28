@@ -201,5 +201,6 @@
                Margin="0 60 0 0"
                Source="{Binding SourcePage}"
                NavigationUIVisibility="Hidden"/>
+        
     </Grid>
 </Window>
