@@ -16,6 +16,7 @@ namespace PhoneBook.WPF.ViewModels.PageViewModel
 
         private void OnSave(object p)
         {
+
             Notification.ShowInformation("Добавлен");
         }
 

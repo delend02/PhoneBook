@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Windows;
 using ToastNotifications;
 using ToastNotifications.Core;
 using ToastNotifications.Lifetime;
@@ -13,7 +12,7 @@ namespace PhoneBook.WPF.Service
         private static Notifier _notifier  = new Notifier(cfg =>
         {
             cfg.PositionProvider = new WindowPositionProvider(
-                parentWindow: Application.Current.MainWindow,
+                parentWindow: System.Windows.Application.Current.MainWindow,
                 corner: Corner.BottomRight,
                 offsetX: 10,
                 offsetY: 10);
@@ -22,7 +21,7 @@ namespace PhoneBook.WPF.Service
                 notificationLifetime: TimeSpan.FromSeconds(6),
                 maximumNotificationCount: MaximumNotificationCount.FromCount(6));
 
-            cfg.Dispatcher = Application.Current.Dispatcher;
+            cfg.Dispatcher = System.Windows.Application.Current.Dispatcher;
 
             cfg.DisplayOptions.TopMost = false;
             cfg.DisplayOptions.Width = 250;
