@@ -1,4 +1,6 @@
-﻿using PhoneBook.WPF.Service;
+﻿using PhoneBook.ApiInterLayer.Models;
+using PhoneBook.Domain.Entity;
+using PhoneBook.WPF.Service;
 using PhoneBook.WPF.ViewModels.Command;
 using System.Windows.Input;
 
@@ -14,9 +16,10 @@ namespace PhoneBook.WPF.ViewModels.PageViewModel
         #region Button
         public ICommand Save { get; }
 
-        private void OnSave(object p)
+        private async void OnSave(object p)
         {
-
+            await PhoneApi.CreateAsync(new TelephoneBook { FirstName = FirstName, LastName = LastName, NumberPhone = NumberPhone, Address = Adress });
+            //var a = PhoneApi.GetAllAsync();
             Notification.ShowInformation("Добавлен");
         }
 

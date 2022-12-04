@@ -45,7 +45,6 @@ namespace PhoneBook.Application.Services.TelephoneServices
             return null;
         }
 
-
         public IEnumerable<TelephoneBook> RangeDelete(List<ulong> ids)
         {
             var result = _db.GetByID(ids);

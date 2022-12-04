@@ -1,9 +1,10 @@
-﻿using System.ComponentModel;
+﻿using System;
+using System.ComponentModel;
 using System.Runtime.CompilerServices;
 
 namespace PhoneBook.WPF.ViewModels
 {
-    internal abstract class ViewModelBase : INotifyPropertyChanged
+    internal abstract class ViewModelBase : INotifyPropertyChanged, IDisposable
     {
         const string SourcePathPage = "../PageViews";
         protected const string AddPageSource = $"{SourcePathPage}/AddPage.xaml";
@@ -37,6 +38,11 @@ namespace PhoneBook.WPF.ViewModels
         protected void GoToPage(string source)
         {
             SourcePage = source;
+        }
+
+        public void Dispose()
+        {
+            throw new NotImplementedException();
         }
     }
 }
