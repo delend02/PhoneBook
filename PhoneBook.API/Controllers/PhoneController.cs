@@ -22,7 +22,7 @@ namespace PhoneBook.API.Controllers
             return Ok(resultTelephoneBook);
         }
 
-        [HttpPost]
+        [HttpPut]
         public IActionResult Update([FromBody] TelephoneBook telephoneBook)
         {
             _telephoneServices.Update(telephoneBook);

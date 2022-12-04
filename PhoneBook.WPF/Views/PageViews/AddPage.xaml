@@ -80,7 +80,7 @@
                     Margin="10"
                     HorizontalAlignment="Stretch"
                     VerticalAlignment="Top">
-            <TextBox Text="{Binding FisrtName}"
+            <TextBox Text="{Binding FirstName}"
                      Style="{StaticResource StyleTextBoxPanel}"/>
             <TextBox Text="{Binding LastName}"
                      Style="{StaticResource StyleTextBoxPanel}"/>

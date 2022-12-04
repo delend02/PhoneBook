@@ -19,7 +19,7 @@ namespace PhoneBook.WPF.ViewModels.PageViewModel
         private async void OnSave(object p)
         {
             await PhoneApi.CreateAsync(new TelephoneBook { FirstName = FirstName, LastName = LastName, NumberPhone = NumberPhone, Address = Adress });
-            var a = PhoneApi.GetAllAsync();
+            //var a = PhoneApi.GetAllAsync();
             Notification.ShowInformation("Добавлен");
         }
 
