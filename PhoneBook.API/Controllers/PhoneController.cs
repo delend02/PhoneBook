@@ -29,7 +29,7 @@ namespace PhoneBook.API.Controllers
             return Ok();
         }
 
-        [HttpPost("{id}")]
+        [HttpDelete("{id}")]
         public IActionResult Delete([FromRoute] ulong id)
         {
             _telephoneServices.Delete(id);

@@ -18,9 +18,24 @@ namespace PhoneBook.WPF.ViewModels.PageViewModel
 
         private async void OnSave(object p)
         {
-            await PhoneApi.CreateAsync(new TelephoneBook { FirstName = FirstName, LastName = LastName, NumberPhone = NumberPhone, Address = Adress });
-            //var a = PhoneApi.GetAllAsync();
-            Notification.ShowInformation("Добавлен");
+            var phone = new TelephoneBook
+            {
+                FirstName = FirstName,
+                LastName = LastName,
+                NumberPhone = NumberPhone,
+                Address = Adress
+            };
+
+            var resultPhone = await PhoneApi.CreateAsync(phone);
+
+            var textMessage = string.Empty;
+
+            if (resultPhone is not null)
+                textMessage = $"Пользователь {resultPhone.FirstName} {resultPhone.LastName} успешно добавлен";
+            else
+                textMessage = $"Возникла проблема при добавлении";
+
+            Notification.ShowInformation(textMessage);
         }
 
         private bool CanSave(object p) => true;
