@@ -11,10 +11,10 @@ namespace PhoneBook.ApiInterLayer.Models
             return result;
         }
 
-        public static async Task<TelephoneBook> GetAllAsync(CancellationToken cancellationToken = default)
+        public static async Task<List<TelephoneBook>> GetAllAsync(CancellationToken cancellationToken = default)
         {
             var endpoints = Endpoints.Phone;
-            var result = await Api.Client.GetAsync<TelephoneBook>(endpoints, cancellationToken);
+            var result = await Api.Client.GetAsync<List<TelephoneBook>>(endpoints, cancellationToken);
             return result;
         }
 

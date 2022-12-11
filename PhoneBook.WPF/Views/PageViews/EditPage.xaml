@@ -1,13 +1,12 @@
-﻿<Page x:Class="PhoneBook.WPF.Views.PageViews.AddPage"
+﻿<Page x:Class="PhoneBook.WPF.Views.PageViews.EditPage"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-      xmlns:local="clr-namespace:PhoneBook.WPF.ViewModels.PageViewModel"
-      Title="Добавить телефон">
+      xmlns:local="clr-namespace:PhoneBook.WPF.ViewModels.PageViewModel">
 
     <Page.DataContext>
-        <local:AddPageViewModel/>
+        <local:EditPageViewModel/>
     </Page.DataContext>
 
     <Page.Resources>
@@ -58,7 +57,7 @@
             <RowDefinition Height="*"/>
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
-        
+
         <StackPanel Margin="10"
                     HorizontalAlignment="Left"
                     VerticalAlignment="Top">
@@ -93,12 +92,12 @@
 
         <Button Grid.Row="1"
                 Grid.ColumnSpan="2"
-                Content="Добавить"
+                Content="Сохранить"
                 Command="{Binding Save}"
                 Style="{StaticResource StyleButton}"
                 Margin="0 0 0 20"
                 HorizontalAlignment="Center">
         </Button>
-        
+
     </Grid>
 </Page>

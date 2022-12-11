@@ -34,7 +34,7 @@ namespace PhoneBook.Infrastucture.Data.Repository
         {
 
             IEnumerable<TelephoneBook> telephoneBooks = (from book in _db.Books
-                                                         where ids.Contains(book.ID)
+                                                         where ids.Equals(book.ID)
                                                          select book).ToList();
 
             return telephoneBooks;
