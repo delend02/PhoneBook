@@ -3,9 +3,8 @@
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
       xmlns:local="clr-namespace:PhoneBook.WPF.ViewModels.PageViewModel"
-      mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800"
       Title="ContactPage">
 
     <Page.DataContext>
@@ -13,6 +12,33 @@
     </Page.DataContext>
     
     <Grid>
-        
+        <DataGrid ItemsSource="{Binding ListOfContact}"
+                  SelectedItem="{Binding SelectePhone}"
+                  AutoGenerateColumns="False"
+                  CanUserReorderColumns="False"
+                  CanUserDeleteRows="False"
+                  CanUserAddRows="False"
+                  FontSize="16">
+            <i:Interaction.Triggers>
+                <i:EventTrigger EventName="MouseDoubleClick">
+                    <i:InvokeCommandAction
+                        Command="{Binding EditPhone}"/>
+                </i:EventTrigger>
+            </i:Interaction.Triggers>
+            <DataGrid.ContextMenu>
+                <ContextMenu>
+                    <MenuItem Header="Открыть для редактирования" Command="{Binding EditPhone}"/>
+                    <MenuItem Header="Добавить новый телефон" Command="{Binding AddNewPhone}"/>
+                </ContextMenu>
+            </DataGrid.ContextMenu>
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="ID" Binding="{Binding ID}" />
+                <DataGridTextColumn Header="Фамилия" Binding="{Binding LastName}" Width="*"/>
+                <DataGridTextColumn Header="Имя" Binding="{Binding FirstName}" Width="*"/>
+                <DataGridTextColumn Header="Отчество" Binding="{Binding SurName}" Width="*"/>
+                <DataGridTextColumn Header="Номер телефона" Binding="{Binding NumberPhone}" Width="*"/>
+                <DataGridTextColumn Header="Адрес" Binding="{Binding Address}" Width="3*"/>
+            </DataGrid.Columns>
+        </DataGrid>
     </Grid>
 </Page>

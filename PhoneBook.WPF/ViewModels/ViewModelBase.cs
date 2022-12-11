@@ -9,7 +9,7 @@ namespace PhoneBook.WPF.ViewModels
         const string SourcePathPage = "../PageViews";
         protected const string AddPageSource = $"{SourcePathPage}/AddPage.xaml";
         protected string SearchPageSource = $"{SourcePathPage}/SearchPage.xaml";
-
+        protected string ContactPage = $"{SourcePathPage}/ContactPage.xaml";
 
         public event PropertyChangedEventHandler? PropertyChanged;
 
@@ -42,7 +42,7 @@ namespace PhoneBook.WPF.ViewModels
 
         public void Dispose()
         {
-            throw new NotImplementedException();
+            
         }
     }
 }

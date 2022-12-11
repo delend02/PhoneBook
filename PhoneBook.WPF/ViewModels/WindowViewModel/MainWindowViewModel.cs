@@ -26,28 +26,20 @@ namespace PhoneBook.WPF.ViewModels.WindowViewModel
 
         public ICommand Add { get; }
 
-        private void OnAdd(object p)
-        {
-            GoToPage(AddPageSource);
-        }
+        private void OnAdd(object p) => GoToPage(AddPageSource);
+      
 
         private bool CanAdd(object p) => true;
 
         public ICommand Search { get; }
 
-        private void OnSearch(object p)
-        {
-            GoToPage(SearchPageSource);
-        }
+        private void OnSearch(object p) => GoToPage(SearchPageSource);
 
         private bool CanSearch(object p) => true;
 
         public ICommand Table { get; }
 
-        private void OnTable(object p)
-        {
-
-        }
+        private void OnTable(object p) => GoToPage(ContactPage);
 
         private bool CanTable(object p) => true;
         #endregion
