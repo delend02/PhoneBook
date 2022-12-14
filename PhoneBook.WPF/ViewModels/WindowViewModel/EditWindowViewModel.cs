@@ -4,11 +4,11 @@ using PhoneBook.WPF.Service;
 using PhoneBook.WPF.ViewModels.Command;
 using System.Windows.Input;
 
-namespace PhoneBook.WPF.ViewModels.PageViewModel
+namespace PhoneBook.WPF.ViewModels.WindowViewModel
 {
-    internal class EditPageViewModel : PageViewModelBase
+    internal class EditWindowViewModel : WindowViewModelBase
     {
-        public EditPageViewModel()
+        public EditWindowViewModel()
         {
             LoadPhone();
             Save = new LamdaCommand(OnSave, CanSave);
