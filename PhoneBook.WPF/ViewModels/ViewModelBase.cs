@@ -11,13 +11,13 @@ namespace PhoneBook.WPF.ViewModels
         protected string SearchPageSource = $"{SourcePathPage}/SearchPage.xaml";
         protected string ContactPage = $"{SourcePathPage}/ContactPage.xaml";
 
-        public event PropertyChangedEventHandler? PropertyChanged;
+        public event PropertyChangedEventHandler PropertyChanged;
 
-        protected virtual void OnPropertyChanged([CallerMemberName] string? PropertyName = null)
+        protected virtual void OnPropertyChanged([CallerMemberName] string PropertyName = null)
             => PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(PropertyName));
 
 
-        protected virtual bool Set<T>(ref T fieled, T value, [CallerMemberName] string? PropertyName = null)
+        protected virtual bool Set<T>(ref T fieled, T value, [CallerMemberName] string PropertyName = null)
         {
             if (Equals(fieled, value)) return false;
 

@@ -1,9 +1,7 @@
 ﻿using PhoneBook.ApiInterLayer.Models;
 using PhoneBook.Domain.Entity;
-using PhoneBook.WPF.Service;
 using PhoneBook.WPF.ViewModels.Command;
-using PhoneBook.WPF.Views.PageViews;
-using System;
+using PhoneBook.WPF.Views.WindowViews;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Windows.Input;
@@ -44,10 +42,8 @@ namespace PhoneBook.WPF.ViewModels.PageViewModel
 
         private void OnEditPhone(object p)
         {
-            EditPage editPage = new EditPage()
-            {
-                Phone = SelectePhone
-            };
+            EditWindow editWnd = new EditWindow(SelectePhone);
+            editWnd.ShowDialog();
         }
 
         private bool CanEditPhone(object p) => true;
