@@ -10,6 +10,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\PhoneBook.ApiInterLayer\PhoneBook.ApiInterLayer.csproj" />
     <ProjectReference Include="..\PhoneBook.Application\PhoneBook.Application.csproj" />
     <ProjectReference Include="..\PhoneBook.Domain\PhoneBook.Domain.csproj" />
     <ProjectReference Include="..\PhoneBook.Infrastucture\PhoneBook.Infrastucture.csproj" />
