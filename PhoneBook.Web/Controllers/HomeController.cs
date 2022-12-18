@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using PhoneBook.ApiInterLayer.Models;
 using PhoneBook.Application.Services.TelephoneServices;
 using PhoneBook.Web.Mappers;
 using PhoneBook.Web.Models;
@@ -10,15 +11,15 @@ namespace PhoneBook.Web.Controllers
     {
         private readonly ITelephoneService _telephoneServices;
 
-        public HomeController(ITelephoneService telephoneServices)
+        public HomeController()
         {
-            _telephoneServices = telephoneServices;
+            
         }
 
         [HttpGet]
         public IActionResult Table()
         {
-            var books = _telephoneServices.GetAll().ConstructToListModels();
+            var books = PhoneApi.GetAllAsync();//.ConstructToListModels();
 
             return View(books);
         }
