@@ -1,5 +1,5 @@
-﻿using PhoneBook.WPF.ViewModels.Command;
-using System.Collections.Generic;
+﻿using PhoneBook.Domain.Entity;
+using PhoneBook.WPF.ViewModels.Command;
 using System.Windows.Input;
 
 namespace PhoneBook.WPF.ViewModels.WindowViewModel
@@ -45,7 +45,6 @@ namespace PhoneBook.WPF.ViewModels.WindowViewModel
         #endregion
 
         private string _textHeader;
-
         public string TextHeader
         {
             get => _textHeader;
@@ -53,11 +52,31 @@ namespace PhoneBook.WPF.ViewModels.WindowViewModel
         }
 
         private string _title;
-
         public string Title
         {
             get => _title;
             set => Set(ref _title, value);
+        }
+
+        private string _typeLogin;
+        public string TypeLogin
+        {
+            get => _typeLogin;
+            set => Set(ref _typeLogin, value);
+        }
+
+        private string _pathImage;
+        public string PathImage 
+        { 
+            get => _pathImage; 
+            set => Set(ref _pathImage, value); 
+        }
+
+        private User _user;
+        public User User 
+        {
+            get => _user;
+            set => Set(ref _user, value);
         }
     }
 }
