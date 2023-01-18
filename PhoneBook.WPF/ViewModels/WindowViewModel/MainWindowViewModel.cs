@@ -1,5 +1,6 @@
 ﻿using PhoneBook.Domain.Entity;
 using PhoneBook.WPF.ViewModels.Command;
+using PhoneBook.WPF.Views.WindowViews;
 using System.Windows.Input;
 
 namespace PhoneBook.WPF.ViewModels.WindowViewModel
@@ -12,6 +13,7 @@ namespace PhoneBook.WPF.ViewModels.WindowViewModel
             Search = new LamdaCommand(OnSearch, CanSearch);
             Table = new LamdaCommand(OnTable, CanTable);
             Exit = new LamdaCommand(OnExit, CanExit);
+            Enter = new LamdaCommand(OnEnter, CanEnter);
         }
 
         #region Button
@@ -19,7 +21,7 @@ namespace PhoneBook.WPF.ViewModels.WindowViewModel
 
         private void OnExit(object p)
         {
-
+            
         }
 
         private bool CanExit(object p) => true;
@@ -42,6 +44,16 @@ namespace PhoneBook.WPF.ViewModels.WindowViewModel
         private void OnTable(object p) => GoToPage(ContactPage);
 
         private bool CanTable(object p) => true;
+        
+        public ICommand Enter { get; }
+
+        private void OnEnter(object p)
+        {
+            AuthorizationWindow authorizationWnd = new();
+            authorizationWnd.ShowDialog();
+        }
+
+        private bool CanEnter(object p) => true;
         #endregion
 
         private string _textHeader;
@@ -77,6 +89,13 @@ namespace PhoneBook.WPF.ViewModels.WindowViewModel
         {
             get => _user;
             set => Set(ref _user, value);
+        }
+
+        private bool _isAuth;
+        public bool IsAuth 
+        {
+            get => _isAuth; 
+            set => Set(ref _isAuth, value); 
         }
     }
 }
