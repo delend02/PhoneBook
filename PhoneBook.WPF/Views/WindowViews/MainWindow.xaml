@@ -38,7 +38,7 @@
         </Style>
     </Window.Resources>
     
-    <Grid>
+    <Grid Background="Black">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="auto"/>
             <ColumnDefinition/>
@@ -48,17 +48,43 @@
             <RowDefinition/>
             <RowDefinition/>
         </Grid.RowDefinitions>
-        <StackPanel VerticalAlignment="Top"
-                    Grid.ColumnSpan="3"
-                    Background="Black"
-                    Height="50">
+        
+        <Grid VerticalAlignment="Top"
+              Grid.ColumnSpan="3"
+              Height="60">
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="6*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
             <TextBlock Text="{Binding TextHeader}"
+                       Grid.Column="0"
                        Foreground="White" 
                        FontSize="45"
                        HorizontalAlignment="Center"/>
-        </StackPanel>
-        <Grid Background="Black"
-              Grid.RowSpan="3"
+
+            <StackPanel Grid.Column="1">
+                
+                <Border CornerRadius="100"
+                        Width = "40"
+                        Height = "40"
+                        Margin="0 5 0 0"
+                        Background="White">
+                    <Image Source="{Binding PathImage}">
+                        
+                    </Image>
+                </Border>
+
+                <TextBlock Text="{Binding User}"
+                           Foreground="White"
+                           FontSize="8"
+                           HorizontalAlignment="Center"/>
+            </StackPanel>
+            
+        </Grid>
+        
+        <Grid Grid.RowSpan="3"
               Width="60">
             <Grid.RowDefinitions>
                 <RowDefinition Height="*"/>
@@ -198,6 +224,7 @@
 
         <Frame Grid.RowSpan="3"
                Grid.Column="1"
+               Background="White"
                Margin="0 60 0 0"
                Source="{Binding SourcePage}"
                NavigationUIVisibility="Hidden"/>
