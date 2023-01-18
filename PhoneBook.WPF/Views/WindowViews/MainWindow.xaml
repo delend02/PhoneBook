@@ -6,9 +6,12 @@
         xmlns:local="clr-namespace:PhoneBook.WPF.ViewModels.WindowViewModel"
         mc:Ignorable="d"
         Title="{Binding Title}" 
-        MinHeight="450" 
-        MinWidth="800"
-        WindowStyle="SingleBorderWindow">
+        MinHeight="410" 
+        MinWidth="700"
+        MaxHeight="410" 
+        MaxWidth="700"
+        WindowStartupLocation="CenterScreen"
+        WindowStyle="None">
     <Window.DataContext>
         <local:MainWindowViewModel/>
     </Window.DataContext>
@@ -64,24 +67,38 @@
                        FontSize="45"
                        HorizontalAlignment="Center"/>
 
-            <StackPanel Grid.Column="1">
-                
-                <Border CornerRadius="100"
-                        Width = "40"
-                        Height = "40"
+            <StackPanel Grid.Column="1"
+                        Visibility="{Binding IsAuth}">
+                <Border CornerRadius="20"
+                        Width = "35"
+                        Height = "35"
                         Margin="0 5 0 0"
                         Background="White">
-                    <Image Source="{Binding PathImage}">
-                        
-                    </Image>
+                    <Image Source="{Binding PathImage}"/>
                 </Border>
-
+                
                 <TextBlock Text="{Binding User}"
                            Foreground="White"
-                           FontSize="8"
+                           Margin="0 2 0 0"
+                           FontSize="12"
                            HorizontalAlignment="Center"/>
             </StackPanel>
-            
+
+
+            <StackPanel Grid.Column="1"
+                        Visibility="{Binding IsAuth}"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Bottom">
+                <Button Content="Войти"
+                        Margin="0"
+                        Style="{StaticResource btnStyle}"
+                        Command="{Binding Path=Enter}"
+                        Height="20"
+                        Foreground="White"
+                        BorderBrush="Transparent"
+                        Background="Transparent">
+                </Button>   
+            </StackPanel>
         </Grid>
         
         <Grid Grid.RowSpan="3"
