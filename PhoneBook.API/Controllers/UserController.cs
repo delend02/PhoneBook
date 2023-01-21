@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Configuration;
 using PhoneBook.Application.Services.UserServices;
 using PhoneBook.Domain.Entity;
 
@@ -9,10 +10,13 @@ namespace PhoneBook.API.Controllers
     public class UserController : ControllerBase
     {
         private readonly IUserService _userServices;
+        private readonly IConfiguration _configuration;
 
-        public UserController(IUserService userServices)
+
+        public UserController(IUserService userServices, IConfiguration configuration)
         {
             _userServices = userServices;
+            _configuration = configuration;
         }
 
         [HttpPost]
@@ -40,6 +44,18 @@ namespace PhoneBook.API.Controllers
         public IActionResult GetByID([FromRoute] ulong id)
         {
             var result = _userServices.Get(id);
+            return Ok(result);
+        }
+
+        [HttpPost("auth")]
+        public IActionResult AuthUser([FromBody] string login, string password)
+        {
+            var privateKey = _configuration.GetSection("PrivateKeys").GetValue<string>("JwtToken");
+            var result = _userServices.AuthUser(login, password, privateKey);
+
+            if (result is null)
+                return NotFound(login);
+
             return Ok(result);
         }
     }

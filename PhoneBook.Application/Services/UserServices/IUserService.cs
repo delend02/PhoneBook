@@ -8,5 +8,6 @@ namespace PhoneBook.Application.Services.UserServices
         User Update(User user);
         User Delete(ulong id);
         User Create(User user);
+        string AuthUser(string login, string password, string privateKey);
     }
 }

@@ -1,4 +1,5 @@
-﻿using PhoneBook.WPF.ViewModels.Command;
+﻿using PhoneBook.ApiInterLayer.Models;
+using PhoneBook.WPF.ViewModels.Command;
 using System.Windows.Input;
 
 namespace PhoneBook.WPF.ViewModels.WindowViewModel
@@ -16,6 +17,7 @@ namespace PhoneBook.WPF.ViewModels.WindowViewModel
 
         private async void OnEnter(object p)
         {
+            var result = await UserApi.AuthUser(Login, Password);
             
         }
 

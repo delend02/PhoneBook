@@ -32,7 +32,6 @@ namespace PhoneBook.Infrastucture.Data.Repository
 
         public IEnumerable<TelephoneBook> GetByID(List<ulong> ids)
         {
-
             IEnumerable<TelephoneBook> telephoneBooks = (from book in _db.Books
                                                          where ids.Equals(book.ID)
                                                          select book).ToList();
@@ -72,10 +71,15 @@ namespace PhoneBook.Infrastucture.Data.Repository
         {
             _db.Books.RemoveRange(books);
         }
+        public TelephoneBook Get(TelephoneBook entity)
+        {
+            throw new NotImplementedException();
+        }
 
         public void Dispose()
         {
-            
+
         }
+
     }
 }

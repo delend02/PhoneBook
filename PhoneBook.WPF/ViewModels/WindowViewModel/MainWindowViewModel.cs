@@ -90,12 +90,5 @@ namespace PhoneBook.WPF.ViewModels.WindowViewModel
             get => _user;
             set => Set(ref _user, value);
         }
-
-        private bool _isAuth;
-        public bool IsAuth 
-        {
-            get => _isAuth; 
-            set => Set(ref _isAuth, value); 
-        }
     }
 }
