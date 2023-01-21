@@ -71,6 +71,15 @@ namespace PhoneBook.Infrastucture.Data.Repository
         {
             _db.User.Update(item);
         }
+
+        public User Get(User entity)
+        {
+            var result = from user in _db.User
+                         where user.Login.Equals(entity.Login.Trim())
+                         select user;
+            return result.FirstOrDefault();
+        }
+
         public void Dispose()
         {
 

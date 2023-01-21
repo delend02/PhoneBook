@@ -8,6 +8,7 @@
         IEnumerable<T> FindAll(Func<T, bool> predicate);
         T GetByID(ulong id);
         IEnumerable<T> GetByID(List<ulong> id);
+        T Get(T entity);
         void Create(T item);
         void Update(T item);
         void Delete(ulong id);
