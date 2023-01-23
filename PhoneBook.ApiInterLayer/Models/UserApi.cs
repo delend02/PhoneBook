@@ -1,4 +1,5 @@
 ﻿using PhoneBook.Domain.Entity;
+using PhoneBook.Infrastucture.Data.DTO;
 
 namespace PhoneBook.ApiInterLayer.Models
 {
@@ -42,9 +43,9 @@ namespace PhoneBook.ApiInterLayer.Models
         public static async Task<string> AuthUser(string login, string password, CancellationToken cancellationToken = default)
         {
             var endpoints = $"{Endpoints.Users}/auth";
-            var user = new User { Login = login, Password = password }; 
-            var result = await Api.Client.PostAsJsonAsync<User, string>(endpoints, user, cancellationToken);
-            return result;
+            var user = new AuthDTO { Login = login, Password = password }; 
+            var result = await Api.Client.PostAsJsonAsync<AuthDTO, TokenDTO>(endpoints, user, cancellationToken);
+            return result.Token;
         }
     }
 }

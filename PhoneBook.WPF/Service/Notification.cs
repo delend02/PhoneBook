@@ -32,39 +32,20 @@ namespace PhoneBook.WPF.Service
             _notifier.Dispose();
         }
 
-        public static void ShowInformation(string message)
-        {
-            _notifier.ShowInformation(message);
-        }
+        public static void ShowInformation(string message) => _notifier.ShowInformation(message);
 
-        public static void ShowInformation(string message, MessageOptions opts)
-        {
-            _notifier.ShowInformation(message, opts);
-        }
+        public static void ShowInformation(string message, MessageOptions opts) => _notifier.ShowInformation(message, opts);
 
-        public static void ShowSuccess(string message)
-        {
-            _notifier.ShowSuccess(message);
-        }
+        public static void ShowSuccess(string message) => _notifier.ShowSuccess(message);
 
-        public static void ShowSuccess(string message, MessageOptions opts)
-        {
-            _notifier.ShowSuccess(message, opts);
-        }
+        public static void ShowSuccess(string message, MessageOptions opts) => _notifier.ShowSuccess(message, opts);
 
-        public static void ShowWarning(string message, MessageOptions opts)
-        {
-            _notifier.ShowWarning(message, opts);
-        }
+        public static void ShowWarning(string message) => _notifier.ShowWarning(message);
 
-        public static void ShowError(string message)
-        {
-            _notifier.ShowError(message);
-        }
+        public static void ShowWarning(string message, MessageOptions opts) => _notifier.ShowWarning(message, opts);
 
-        public static void ShowError(string message, MessageOptions opts)
-        {
-            _notifier.ShowError(message, opts);
-        }
+        public static void ShowError(string message) => _notifier.ShowError(message);
+
+        public static void ShowError(string message, MessageOptions opts) => _notifier.ShowError(message, opts);
     }
 }
