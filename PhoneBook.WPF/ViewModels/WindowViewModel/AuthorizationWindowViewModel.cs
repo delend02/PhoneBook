@@ -1,5 +1,8 @@
 ﻿using PhoneBook.ApiInterLayer.Models;
+using PhoneBook.WPF.Service;
 using PhoneBook.WPF.ViewModels.Command;
+using System;
+using System.Threading.Tasks;
 using System.Windows.Input;
 
 namespace PhoneBook.WPF.ViewModels.WindowViewModel
@@ -17,8 +20,23 @@ namespace PhoneBook.WPF.ViewModels.WindowViewModel
 
         private async void OnEnter(object p)
         {
-            var result = await UserApi.AuthUser(Login, Password);
-            
+            string textMessage = default;
+
+            try
+            {
+                var result = await UserApi.AuthUser(Login, Password);
+
+                if (result is not null)
+                {
+                    textMessage = "Вход выполнен";
+                }
+            }
+            catch (Exception)
+            {
+                textMessage = "Неверный пароль или логин";
+            }
+
+            Notification.ShowWarning(textMessage);
         }
 
         private bool CanEnter(object p) => true;

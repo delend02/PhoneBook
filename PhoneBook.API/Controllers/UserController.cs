@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
+using PhoneBook.API.Models;
 using PhoneBook.Application.Services.UserServices;
 using PhoneBook.Domain.Entity;
 
@@ -48,15 +49,24 @@ namespace PhoneBook.API.Controllers
         }
 
         [HttpPost("auth")]
-        public IActionResult AuthUser([FromBody] string login, string password)
+        public IActionResult AuthUser([FromBody] Authorization.Request auth)
         {
             var privateKey = _configuration.GetSection("PrivateKeys").GetValue<string>("JwtToken");
-            var result = _userServices.AuthUser(login, password, privateKey);
+            var result = _userServices.AuthUser(auth.Login, auth.Password, privateKey);
 
-            if (result is null)
-                return NotFound(login);
+            if (result is not null)
+            {
+                Authorization.Response response = new Authorization.Response { Token = result.Token };
+                return Ok(response);
+            }
+            
+            return NotFound(auth.Login);
+        }
 
-            return Ok(result);
+        [HttpPost("registration")]
+        public IActionResult RegistrationUser([FromBody] Registration.Request reg)
+        {
+            throw new System.NotImplementedException();
         }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using PhoneBook.Domain.Entity;
+using PhoneBook.Infrastucture.Data.DTO;
 
 namespace PhoneBook.Application.Services.UserServices
 {
@@ -8,6 +9,6 @@ namespace PhoneBook.Application.Services.UserServices
         User Update(User user);
         User Delete(ulong id);
         User Create(User user);
-        string AuthUser(string login, string password, string privateKey);
+        TokenDTO AuthUser(string login, string password, string privateKey);
     }
 }

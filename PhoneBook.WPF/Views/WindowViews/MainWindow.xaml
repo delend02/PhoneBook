@@ -6,10 +6,10 @@
         xmlns:local="clr-namespace:PhoneBook.WPF.ViewModels.WindowViewModel"
         mc:Ignorable="d"
         Title="{Binding Title}" 
-        MinHeight="410" 
-        MinWidth="700"
-        MaxHeight="410" 
-        MaxWidth="700"
+        MinHeight="550" 
+        MinWidth="900"
+        MaxHeight="550" 
+        MaxWidth="900"
         WindowStartupLocation="CenterScreen"
         WindowStyle="None">
     <Window.DataContext>

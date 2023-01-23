@@ -1,6 +1,7 @@
 ﻿using Microsoft.Extensions.Logging;
 using PhoneBook.Domain.Entity;
 using PhoneBook.Domain.Interfaces;
+using PhoneBook.Infrastucture.Data.DTO;
 using System.Security.Cryptography;
 using System.Text;
 
@@ -38,21 +39,22 @@ namespace PhoneBook.Application.Services.UserServices
             return _db.GetByID(id);
         }
         
-        public string AuthUser(string login, string password, string rsaKey)
+        public TokenDTO AuthUser(string login, string password, string rsaKey)
         {
-            string token = null;
+            TokenDTO token = null;
             var passHash = HashPasswordToSha256(password);
             var resultUser = _db.Get(new User { Login = login, Password = passHash });
 
-            if (resultUser is not null)
+            if (resultUser is not null && resultUser.Password == passHash)
             {
                 var claims = new Dictionary<string, object>() 
                 {
                     { "id", resultUser.ID }
                 };
 
-                var manager = new Manager(rsaKey);
-                token = manager.CreateToken(claims);
+                var tokenStr = new Manager(rsaKey).CreateToken(claims);
+
+                token = new TokenDTO { Token = tokenStr };
             }
 
             return token;
@@ -72,5 +74,6 @@ namespace PhoneBook.Application.Services.UserServices
             var resultPass = BitConverter.ToString(pass);
             return resultPass;
         }
+
     }
 }
