@@ -47,5 +47,12 @@ namespace PhoneBook.ApiInterLayer.Models
             var result = await Api.Client.PostAsJsonAsync<AuthDTO, TokenDTO>(endpoints, user, cancellationToken);
             return result.Token;
         }
+
+        public static async Task<User> GetByLogin(string login, CancellationToken cancellationToken = default)
+        {
+            var endpoints = $"{Endpoints.Users}/login/{login}";
+            var result = await Api.Client.GetAsync<User>(endpoints, cancellationToken);
+            return result;
+        }
     }
 }

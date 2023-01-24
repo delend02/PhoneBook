@@ -34,7 +34,7 @@ namespace PhoneBook.Application.Services.UserServices
             return null;
         }
 
-        public User Get(ulong id)
+        public User GetByID(ulong id)
         {
             return _db.GetByID(id);
         }
@@ -75,5 +75,10 @@ namespace PhoneBook.Application.Services.UserServices
             return resultPass;
         }
 
+        public User Get(User user)
+        {
+            var result = _db.Get(user);
+            return result;
+        }
     }
 }

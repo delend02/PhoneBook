@@ -77,7 +77,7 @@
                     <Image Source="{Binding PathImage}"/>
                 </Border>
                 
-                <TextBlock Text="{Binding User}"
+                <TextBlock Text="{Binding User.FirstName}"
                            Foreground="White"
                            Margin="0 2 0 0"
                            FontSize="12"
