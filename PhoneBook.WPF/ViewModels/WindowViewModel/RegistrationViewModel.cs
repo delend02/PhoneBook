@@ -1,24 +1,22 @@
 ﻿using PhoneBook.ApiInterLayer.Models;
 using PhoneBook.WPF.Service;
 using PhoneBook.WPF.ViewModels.Command;
-using PhoneBook.WPF.Views.WindowViews;
 using System;
 using System.Windows.Input;
 
 namespace PhoneBook.WPF.ViewModels.WindowViewModel
 {
-    internal class AuthorizationWindowViewModel : WindowViewModelBase
+    internal class RegistrationViewModel : WindowViewModelBase
     {
-        public AuthorizationWindowViewModel()
+        public RegistrationViewModel()
         {
-            Enter = new LamdaCommand(OnEnter, CanEnter);
-            Registration = new LamdaCommand(OnRegistration, CanRegistration);
+            Regist = new LamdaCommand(OnRegist, CanRegist);
             Cancel = new LamdaCommand(OnCancel, CanCancel);
         }
 
-        public ICommand Enter { get; }
+        public ICommand Regist { get; }
 
-        private async void OnEnter(object p)
+        private async void OnRegist(object p)
         {
             try
             {
@@ -26,8 +24,8 @@ namespace PhoneBook.WPF.ViewModels.WindowViewModel
 
                 if (token is not null)
                 {
-                    //Clients.Token = token;
-                    
+                    //Clients.Client = token;
+
                     WindowClosed?.Invoke(p, new EventArgs());
                     Notification.ShowSuccess("Вход выполнен");
                 }
@@ -38,29 +36,27 @@ namespace PhoneBook.WPF.ViewModels.WindowViewModel
             }
         }
 
-        private bool CanEnter(object p) => true;
+        private bool CanRegist(object p) => true;
 
-        public ICommand Registration { get; }
-
-        private async void OnRegistration(object p)
-        {
-            RegistrationWindow registrationWnd = new RegistrationWindow();
-
-            registrationWnd.Closing += (s, e) =>
-            {
-                WindowClosed?.Invoke(p, new EventArgs());
-            };
-            
-            registrationWnd.ShowDialog();
-        }
-
-        private bool CanRegistration(object p) => true;
-        
         public ICommand Cancel { get; }
 
         private async void OnCancel(object p) => WindowClosed?.Invoke(p, new System.EventArgs());
 
         private bool CanCancel(object p) => true;
+
+        private string _firstName;
+        public string FirsName
+        {
+            get => _firstName;
+            set => Set(ref _firstName, value);
+        }
+
+        private string _lastName;
+        public string LastName
+        {
+            get => _lastName;
+            set => Set(ref _lastName, value);
+        }
 
         private string _login;
         public string Login
@@ -68,12 +64,13 @@ namespace PhoneBook.WPF.ViewModels.WindowViewModel
             get => _login;
             set => Set(ref _login, value);
         }
-        
+
         private string _password;
         public string Password
-        { 
-            get => _password; 
-            set => Set(ref _password, value); 
+        {
+            get => _password;
+            set => Set(ref _password, value);
         }
+
     }
 }

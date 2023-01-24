@@ -1,6 +1,8 @@
 ﻿using PhoneBook.Domain.Entity;
+using PhoneBook.WPF.Service;
 using PhoneBook.WPF.ViewModels.Command;
 using PhoneBook.WPF.Views.WindowViews;
+using System;
 using System.Windows.Input;
 
 namespace PhoneBook.WPF.ViewModels.WindowViewModel
@@ -19,10 +21,7 @@ namespace PhoneBook.WPF.ViewModels.WindowViewModel
         #region Button
         public ICommand Exit { get; }
 
-        private void OnExit(object p)
-        {
-            
-        }
+        private void OnExit(object p) => WindowClosed?.Invoke(p, new EventArgs());
 
         private bool CanExit(object p) => true;
 
@@ -30,7 +29,6 @@ namespace PhoneBook.WPF.ViewModels.WindowViewModel
 
         private void OnAdd(object p) => GoToPage(AddPageSource);
       
-
         private bool CanAdd(object p) => true;
 
         public ICommand Search { get; }

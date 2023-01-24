@@ -41,10 +41,17 @@ namespace PhoneBook.API.Controllers
             return Ok(result);
         }
 
-        [HttpGet]
+        [HttpGet("id/{id}")]
         public IActionResult GetByID([FromRoute] ulong id)
         {
-            var result = _userServices.Get(id);
+            var result = _userServices.GetByID(id);
+            return Ok(result);
+        }
+        
+        [HttpGet("login/{login}")]
+        public IActionResult GetByLogin([FromRoute] string login)
+        {
+            var result = _userServices.Get(new User { Login = login });
             return Ok(result);
         }
 
