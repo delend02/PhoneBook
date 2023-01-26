@@ -1,8 +1,9 @@
 ﻿using PhoneBook.ApiInterLayer.Models;
 using PhoneBook.Domain.Entity;
+using PhoneBook.WPF.Service;
 using PhoneBook.WPF.ViewModels.Command;
 using PhoneBook.WPF.Views.WindowViews;
-using System.Collections.Generic;
+using System;
 using System.Collections.ObjectModel;
 using System.Windows.Input;
 
@@ -19,8 +20,15 @@ namespace PhoneBook.WPF.ViewModels.PageViewModel
 
         private async void InitViewTable()
         {
-            var resultPhone = await PhoneApi.GetAllAsync() ?? new List<TelephoneBook>();
-            ListOfContact = new ObservableCollection<TelephoneBook>(resultPhone);
+            try
+            {
+                var resultPhone = await PhoneApi.GetAllAsync();
+                ListOfContact = new ObservableCollection<TelephoneBook>(resultPhone);
+            }
+            catch (Exception)
+            {
+
+            }
         }
 
         private ObservableCollection<TelephoneBook> _listOfContact;
@@ -42,6 +50,12 @@ namespace PhoneBook.WPF.ViewModels.PageViewModel
 
         private void OnEditPhone(object p)
         {
+            if (!Clients.User.Role.HasFlag(Role.Admin))
+            {
+                Notification.ShowWarning("Редактировать может только администратор или автор");
+                return;
+            }
+
             EditWindow editWnd = new EditWindow(SelectePhone);
             editWnd.ShowDialog();
         }
@@ -52,6 +66,12 @@ namespace PhoneBook.WPF.ViewModels.PageViewModel
 
         private void OnAddNewPhone(object p)
         {
+            if (!Clients.User.Role.HasFlag(Role.Admin))
+            {
+                Notification.ShowWarning("Добавлять телефон может только авторизованный пользователь");
+                return;
+            }
+
             GoToPage(AddPageSource);
         }
 

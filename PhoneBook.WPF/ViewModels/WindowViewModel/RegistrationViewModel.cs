@@ -1,4 +1,5 @@
 ﻿using PhoneBook.ApiInterLayer.Models;
+using PhoneBook.Domain.Entity;
 using PhoneBook.WPF.Service;
 using PhoneBook.WPF.ViewModels.Command;
 using System;
@@ -20,19 +21,28 @@ namespace PhoneBook.WPF.ViewModels.WindowViewModel
         {
             try
             {
-                var token = await UserApi.AuthUser(Login, Password);
-
-                if (token is not null)
+                var user = new User
                 {
-                    //Clients.Client = token;
+                    FirstName = FirstName,
+                    LastName = LastName,
+                    Login = Login,
+                    Password = Password,
+                    Role = Role.User
+                };
 
-                    WindowClosed?.Invoke(p, new EventArgs());
-                    Notification.ShowSuccess("Вход выполнен");
-                }
+                var resultUser = await UserApi.CreateAsync(user) ?? throw new Exception("Данный пользователь уже существует");
+
+                var token = await UserApi.AuthUser(Login, Password) ?? throw new Exception("Не удалось авторизоваться. Обратитесь в поддержку");
+
+                Notification.ShowSuccess("Пользователь зарегестрирован");
+
+                Clients.User = user;
+
+                WindowClosed?.Invoke(p, new EventArgs());
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                Notification.ShowWarning("Неверный пароль или логин");
+                Notification.ShowWarning(ex.Message);
             }
         }
 
@@ -40,12 +50,12 @@ namespace PhoneBook.WPF.ViewModels.WindowViewModel
 
         public ICommand Cancel { get; }
 
-        private async void OnCancel(object p) => WindowClosed?.Invoke(p, new System.EventArgs());
+        private async void OnCancel(object p) => WindowClosed?.Invoke(p, new EventArgs());
 
         private bool CanCancel(object p) => true;
 
         private string _firstName;
-        public string FirsName
+        public string FirstName
         {
             get => _firstName;
             set => Set(ref _firstName, value);

@@ -2,13 +2,10 @@
 {
     public class Api
     {
-        public static DefaultHttpClient Client { get; private set; }
+        private const string baseUrl = "https://localhost:5001/";
 
-        static Api()
-        {
-            var baseUrl = "https://localhost:5001/";
+        internal static DefaultHttpClient Client { get; private set; } = new DefaultHttpClient(new Uri(baseUrl));
 
-            Client = new DefaultHttpClient(new Uri(baseUrl));
-        }
+        public static void UseToken(string token) => Client = new DefaultHttpClient(new Uri(baseUrl), token);
     }
 }
