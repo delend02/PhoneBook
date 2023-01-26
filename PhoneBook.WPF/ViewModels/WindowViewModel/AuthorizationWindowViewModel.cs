@@ -1,4 +1,5 @@
-﻿using PhoneBook.ApiInterLayer.Models;
+﻿using PhoneBook.ApiInterLayer;
+using PhoneBook.ApiInterLayer.Models;
 using PhoneBook.WPF.Service;
 using PhoneBook.WPF.ViewModels.Command;
 using PhoneBook.WPF.Views.WindowViews;
@@ -22,19 +23,22 @@ namespace PhoneBook.WPF.ViewModels.WindowViewModel
         {
             try
             {
-                var token = await UserApi.AuthUser(Login, Password);
+                var token = await UserApi.AuthUser(Login, Password)
 
-                if (token is not null)
-                {
-                    //Clients.Token = token;
-                    
-                    WindowClosed?.Invoke(p, new EventArgs());
-                    Notification.ShowSuccess("Вход выполнен");
-                }
+                Api.UseToken(token);
+
+                var user = await UserApi.GetByLogin(Login);
+
+                Clients.User = user;
+
+                WindowClosed?.Invoke(p, new EventArgs());
+
+                Notification.ShowSuccess("Вход выполнен");
+                
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                Notification.ShowWarning("Неверный пароль или логин");
+                Notification.ShowWarning(ex.Message);
             }
         }
 

@@ -1,8 +1,9 @@
 ﻿namespace PhoneBook.Domain.Entity
 {
+    [Flags]
     public enum Role
     {
-        None = 0,
-        Admin = 1
+        User = 1,
+        Admin = 2
     }
 }

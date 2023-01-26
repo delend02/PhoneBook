@@ -8,18 +8,22 @@ namespace PhoneBook.ApiInterLayer
     {
         private HttpClient Client { get; set; }
 
-        public DefaultHttpClient(Uri baseAddress)
+        public DefaultHttpClient(Uri baseAddress, string token = null)
         {
             var clientHandler = new HttpClientHandler
             {
                 ServerCertificateCustomValidationCallback = (sender, cert, chain, sslPolicyErrors) => { return true; }
             };
 
+            if (token != null)
+                clientHandler.CookieContainer.Add(new Cookie("token", $"{token}"));
+
             Client = new HttpClient(clientHandler)
             {
                 BaseAddress = baseAddress
             };
         }
+
         public async Task<T> GetAsync<T>(string endpoint, CancellationToken cancellationToken = default)
         {
             var response = await Client.GetAsync(endpoint, cancellationToken);

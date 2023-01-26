@@ -103,7 +103,7 @@
                              Grid.Row="3"
                              Margin="5"
                              FontSize="20"
-                             Text="{Binding Path=Login}"/>
+                             Text="{Binding Path=Password}"/>
                 </Grid>
 
                 <Grid Margin="10">
