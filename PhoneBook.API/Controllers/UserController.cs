@@ -20,14 +20,14 @@ namespace PhoneBook.API.Controllers
             _configuration = configuration;
         }
 
-        [HttpPost]
+        [HttpPost("create")]
         public IActionResult Create([FromBody] User user)
         {
             var result = _userServices.Create(user);
             return Ok(result);
         }
 
-        [HttpPost]
+        [HttpPut("update")]
         public IActionResult Update([FromBody] User user)
         {
             var result = _userServices.Update(user);
@@ -67,7 +67,7 @@ namespace PhoneBook.API.Controllers
                 return Ok(response);
             }
             
-            return NotFound(auth.Login);
+            return NotFound();
         }
 
         [HttpPost("registration")]

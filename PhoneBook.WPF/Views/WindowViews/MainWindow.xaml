@@ -67,8 +67,7 @@
                        FontSize="45"
                        HorizontalAlignment="Center"/>
 
-            <StackPanel Grid.Column="1"
-                        Visibility="{Binding IsAuth}">
+            <StackPanel Grid.Column="1">
                 <Border CornerRadius="20"
                         Width = "35"
                         Height = "35"
@@ -77,18 +76,12 @@
                     <Image Source="{Binding PathImage}"/>
                 </Border>
                 
-                <TextBlock Text="{Binding User.FirstName}"
+                <!--<TextBlock Text="{Binding User.Login}"
                            Foreground="White"
                            Margin="0 2 0 0"
                            FontSize="12"
-                           HorizontalAlignment="Center"/>
-            </StackPanel>
+                           HorizontalAlignment="Center"/>-->
 
-
-            <StackPanel Grid.Column="1"
-                        Visibility="{Binding IsAuth}"
-                        HorizontalAlignment="Center"
-                        VerticalAlignment="Bottom">
                 <Button Content="Войти"
                         Margin="0"
                         Style="{StaticResource btnStyle}"
@@ -97,7 +90,7 @@
                         Foreground="White"
                         BorderBrush="Transparent"
                         Background="Transparent">
-                </Button>   
+                </Button>
             </StackPanel>
         </Grid>
         
