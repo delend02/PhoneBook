@@ -15,8 +15,10 @@ namespace PhoneBook.ApiInterLayer
                 ServerCertificateCustomValidationCallback = (sender, cert, chain, sslPolicyErrors) => { return true; }
             };
 
+            CookieContainer cookieContainer = new CookieContainer();
+
             if (token != null)
-                clientHandler.CookieContainer.Add(new Cookie("token", $"{token}"));
+                clientHandler.CookieContainer.Add(new Cookie("token", $"{token}") { Domain = baseAddress.Host});
 
             Client = new HttpClient(clientHandler)
             {

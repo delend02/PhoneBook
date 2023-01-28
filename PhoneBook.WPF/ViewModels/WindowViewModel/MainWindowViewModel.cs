@@ -95,11 +95,19 @@ namespace PhoneBook.WPF.ViewModels.WindowViewModel
             set => Set(ref _pathImage, value); 
         }
 
-        private User _user;
+        public bool IsNotAuth
+        {
+            get => User is null;
+        }
+
+        public bool IsAuth 
+        {
+            get => User is not null;  
+        }
+
         public User User 
         {
-            get => _user;
-            set => Set(ref _user, value);
+            get => Clients.User;
         }
     }
 }

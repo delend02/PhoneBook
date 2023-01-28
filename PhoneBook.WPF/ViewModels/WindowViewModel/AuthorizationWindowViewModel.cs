@@ -23,17 +23,23 @@ namespace PhoneBook.WPF.ViewModels.WindowViewModel
         {
             try
             {
-                var token = await UserApi.AuthUser(Login, Password)
+                var message = "Неверный пароль или логин";
+                var token = await UserApi.AuthUser(Login, Password);
 
-                Api.UseToken(token);
+                if (token is not null)
+                {
+                    Api.UseToken(token);
 
-                var user = await UserApi.GetByLogin(Login);
+                    var user = await UserApi.GetByLogin(Login) ?? throw new Exception("Не удалось получить пользователя. Свяжитесь с тех.поддержкой");
 
-                Clients.User = user;
+                    Clients.User = user;
+
+                    message = $"Вход выполнен. Вы авторизованы как {Clients.User.Login}";
+                }
+
+                Notification.ShowInformation(message);
 
                 WindowClosed?.Invoke(p, new EventArgs());
-
-                Notification.ShowSuccess("Вход выполнен");
                 
             }
             catch (Exception ex)
