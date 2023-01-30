@@ -75,12 +75,6 @@
                         Background="White">
                     <Image Source="{Binding PathImage}"/>
                 </Border>
-                
-                <!--<TextBlock Text="{Binding User.Login}"
-                           Foreground="White"
-                           Margin="0 2 0 0"
-                           FontSize="12"
-                           HorizontalAlignment="Center"/>-->
 
                 <Button Content="Войти"
                         Margin="0"
@@ -89,8 +83,10 @@
                         Height="20"
                         Foreground="White"
                         BorderBrush="Transparent"
-                        Background="Transparent">
-                </Button>
+                        Background="Transparent"/>
+
+
+
             </StackPanel>
         </Grid>
         
