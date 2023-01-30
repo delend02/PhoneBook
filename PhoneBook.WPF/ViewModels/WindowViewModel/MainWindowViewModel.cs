@@ -16,7 +16,7 @@ namespace PhoneBook.WPF.ViewModels.WindowViewModel
             Table = new LamdaCommand(OnTable, CanTable);
             Exit = new LamdaCommand(OnExit, CanExit);
             Enter = new LamdaCommand(OnEnter, CanEnter);
-        }
+        }   
 
         #region Button
         public ICommand Exit { get; }
@@ -61,6 +61,7 @@ namespace PhoneBook.WPF.ViewModels.WindowViewModel
         private void OnEnter(object p)
         {
             AuthorizationWindow authorizationWnd = new();
+
             authorizationWnd.ShowDialog();
         }
 
@@ -93,16 +94,6 @@ namespace PhoneBook.WPF.ViewModels.WindowViewModel
         { 
             get => _pathImage; 
             set => Set(ref _pathImage, value); 
-        }
-
-        public bool IsNotAuth
-        {
-            get => User is null;
-        }
-
-        public bool IsAuth 
-        {
-            get => User is not null;  
         }
 
         public User User 
