@@ -16,7 +16,7 @@ namespace PhoneBook.API.Controllers
 
         public UserController(IUserService userServices, IConfiguration configuration)
         {
-            _userServices = userServices;
+            _userServices    = userServices;
             _configuration = configuration;
         }
 

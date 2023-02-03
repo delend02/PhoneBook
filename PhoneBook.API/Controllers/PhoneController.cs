@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using PhoneBook.Application.Services.TelephoneServices;
 using PhoneBook.Domain.Entity;
 
@@ -35,6 +36,7 @@ namespace PhoneBook.API.Controllers
             _telephoneServices.Delete(id);
             return Ok();
         }
+
 
         [HttpGet("{id}")]
         public IActionResult GetByID([FromRoute] ulong id)
