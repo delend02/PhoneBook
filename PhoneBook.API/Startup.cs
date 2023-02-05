@@ -22,6 +22,7 @@ namespace PhoneBook.API
             var mssqlConnection = Configuration.GetConnectionString("mssqlconnection");
             services.DatabaseConnected(mssqlConnection);
             services.AddEntityServices();
+            services.AddAuthentication();
             services.AddControllers();
         }
 
@@ -35,7 +36,8 @@ namespace PhoneBook.API
             app.UseHttpsRedirection();
 
             app.UseRouting();
-
+            app.UseAuthentication();
+            app.UseAuthorization();
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
