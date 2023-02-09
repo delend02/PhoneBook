@@ -35,6 +35,8 @@ namespace PhoneBook.API
 
             app.UseHttpsRedirection();
 
+            app.UseMiddleware<ExceptionMiddleware>();
+            app.UseMiddleware<AuthorizationMiddleware>();
             app.UseRouting();
             app.UseAuthentication();
             app.UseAuthorization();
@@ -43,8 +45,6 @@ namespace PhoneBook.API
                 endpoints.MapControllers();
             });
 
-            app.UseMiddleware<ExceptionMiddleware>();
-            app.UseMiddleware<AuthorizationMiddleware>();
         }
     }
 }

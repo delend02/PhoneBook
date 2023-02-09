@@ -3,6 +3,7 @@ using PhoneBook.WPF.Service;
 using PhoneBook.WPF.ViewModels.Command;
 using PhoneBook.WPF.Views.WindowViews;
 using System;
+using System.Windows;
 using System.Windows.Input;
 
 namespace PhoneBook.WPF.ViewModels.WindowViewModel
@@ -11,11 +12,18 @@ namespace PhoneBook.WPF.ViewModels.WindowViewModel
     {
         public MainWindowViewModel() : base()
         {
+            if (Clients.User?.Password is null)
+            {
+                VisibleButtonEnter = Visibility.Visible;
+                VisibleButtonAuth = Visibility.Collapsed;
+            }
+
             Add = new LamdaCommand(OnAdd, CanAdd);
             Search = new LamdaCommand(OnSearch, CanSearch);
             Table = new LamdaCommand(OnTable, CanTable);
             Exit = new LamdaCommand(OnExit, CanExit);
             Enter = new LamdaCommand(OnEnter, CanEnter);
+            ExitLogin = new LamdaCommand(OnExitLogin, CanExitLogin);
         }   
 
         #region Button
@@ -24,6 +32,18 @@ namespace PhoneBook.WPF.ViewModels.WindowViewModel
         private void OnExit(object p) => WindowClosed?.Invoke(p, new EventArgs());
 
         private bool CanExit(object p) => true;
+        
+        public ICommand ExitLogin { get; }
+
+        private void OnExitLogin(object p)
+        {
+            VisibleButtonEnter = Visibility.Visible;
+            VisibleButtonAuth = Visibility.Collapsed;
+
+            Clients.User = new User();
+        }
+        
+        private bool CanExitLogin(object p) => true;
 
         public ICommand Add { get; }
 
@@ -62,6 +82,15 @@ namespace PhoneBook.WPF.ViewModels.WindowViewModel
         {
             AuthorizationWindow authorizationWnd = new();
 
+            authorizationWnd.Closing += (snd, ea) =>
+            {
+                if (authorizationWnd.DialogResult.GetValueOrDefault() is true)
+                {
+                    VisibleButtonEnter = Visibility.Collapsed;
+                    VisibleButtonAuth = Visibility.Visible;
+                }
+            };
+
             authorizationWnd.ShowDialog();
         }
 
@@ -95,10 +124,26 @@ namespace PhoneBook.WPF.ViewModels.WindowViewModel
             get => _pathImage; 
             set => Set(ref _pathImage, value); 
         }
+        
+        private Visibility _visibleButtonEnter;
+        public Visibility VisibleButtonEnter
+        { 
+            get => _visibleButtonEnter; 
+            set => Set(ref _visibleButtonEnter, value); 
+        }
+        
+        private Visibility _visibleButtonAuth;
+        public Visibility VisibleButtonAuth
+        { 
+            get => _visibleButtonAuth; 
+            set => Set(ref _visibleButtonAuth, value); 
+        }
 
+        private User _user = Clients.User;
         public User User 
         {
-            get => Clients.User;
+            get => _user;
+            set => Set(ref _user, value);
         }
     }
 }

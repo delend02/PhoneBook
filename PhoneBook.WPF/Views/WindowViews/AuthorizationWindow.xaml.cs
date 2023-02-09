@@ -1,4 +1,5 @@
-﻿using PhoneBook.WPF.ViewModels;
+﻿using PhoneBook.WPF.Service;
+using PhoneBook.WPF.ViewModels;
 using System.Windows;
 
 namespace PhoneBook.WPF.Views.WindowViews
@@ -9,8 +10,14 @@ namespace PhoneBook.WPF.Views.WindowViews
         {
             InitializeComponent();
 
-            (this.DataContext as WindowViewModelBase).WindowClosed += (s, e)
-                => this.Close();
+
+            (this.DataContext as WindowViewModelBase).WindowClosed += (s, e) =>
+            {
+                if (Clients.User?.Password is not null)
+                    DialogResult = true;
+
+                this.Close();
+            };
         }
     }
 }
