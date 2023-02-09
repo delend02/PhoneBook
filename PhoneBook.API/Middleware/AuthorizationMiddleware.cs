@@ -19,21 +19,25 @@ namespace PhoneBook.API.Middleware
 
         public async Task InvokeAsync(HttpContext context)
         {
-            //var privateKey = _configuration.GetSection("PrivateKeys").GetValue<string>("JwtToken");
-            //await _next(context);
+            var privateKey = _configuration.GetSection("PrivateKeys").GetValue<string>("JwtToken");
 
-            //var manager = new Manager(privateKey);
+            var manager = new Manager(privateKey);
 
-            //var isAuth = manager.ValidateToken(context.Request.Cookies["token"], out JwtSecurityToken jwtToken);
+            if (!string.IsNullOrEmpty(context.Request.Cookies["token"]))
+            {
+                var isValidToken = manager.ValidateToken(context.Request.Cookies["token"], out JwtSecurityToken jwtToken);
 
-            //if (isAuth is not false)
-            //{
-            //    context.Response.StatusCode = StatusCodes.Status401Unauthorized;
-            //    await context.Response.WriteAsJsonAsync(new { Error = "Необходима авторизация" });
-            //    return;
-            //}
+                if (isValidToken is not false)
+                {
+                    context.Response.StatusCode = StatusCodes.Status401Unauthorized;
+                    await context.Response.WriteAsJsonAsync(new { Error = "Необходима авторизация" });
+                    return;
+                }
+            }
 
-            
+
+
+            await _next(context);
         }
     }   
 }

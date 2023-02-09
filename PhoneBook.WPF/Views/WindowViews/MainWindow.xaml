@@ -76,14 +76,32 @@
                     <Image Source="{Binding PathImage}"/>
                 </Border>
 
-                <Button Content="Войти"
+                <StackPanel>
+
+
+                    <Button Content="Войти"
                         Margin="0"
                         Style="{StaticResource btnStyle}"
                         Command="{Binding Path=Enter}"
                         Height="20"
                         Foreground="White"
+                        Visibility="{Binding VisibleButtonEnter}"
+                        BorderBrush="Transparent"
+                        Background="Transparent">
+                    </Button>
+
+
+                    <Button Content="{Binding User.Login}"
+                        Margin="0"
+                        Style="{StaticResource btnStyle}"
+                        Command="{Binding Path=ExitLogin}"
+                        Height="20"
+                        Visibility="{Binding VisibleButtonAuth}"
+                        Foreground="White"
                         BorderBrush="Transparent"
                         Background="Transparent"/>
+
+                </StackPanel>
 
 
 
