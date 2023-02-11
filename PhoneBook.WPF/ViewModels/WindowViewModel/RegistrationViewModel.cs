@@ -30,15 +30,18 @@ namespace PhoneBook.WPF.ViewModels.WindowViewModel
                     Role = Role.User
                 };
 
-                var resultUser = await UserApi.CreateAsync(user) ?? throw new Exception("Данный пользователь уже существует");
+                var resultUser = await UserApi.CreateAsync(user);
 
-                var token = await UserApi.AuthUser(Login, Password) ?? throw new Exception("Не удалось авторизоваться. Обратитесь в поддержку");
-
-                Notification.ShowSuccess("Пользователь зарегестрирован");
-
-                Clients.User = user;
-
-                WindowClosed?.Invoke(p, new EventArgs());
+                if (resultUser?.Password != null)
+                {
+                    Notification.ShowSuccess("Пользователь зарегестрирован");
+                    Clients.User = user;
+                    WindowClosed?.Invoke(p, new EventArgs());
+                }
+                else
+                {
+                    Notification.ShowError("Пользователь уже существует");
+                }
             }
             catch (Exception ex)
             {

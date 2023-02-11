@@ -20,13 +20,6 @@ namespace PhoneBook.API.Controllers
             _configuration = configuration;
         }
 
-        [HttpPost("create")]
-        public IActionResult Create([FromBody] User user)
-        {
-            var result = _userServices.Create(user);
-            return Ok(result);
-        }
-
         [HttpPut("update")]
         public IActionResult Update([FromBody] User user)
         {
@@ -67,13 +60,30 @@ namespace PhoneBook.API.Controllers
                 return Ok(response);
             }
             
-            return NotFound();
+            return NotFound(new { Error = "Не найден пользователь"} );
         }
 
         [HttpPost("registration")]
         public IActionResult RegistrationUser([FromBody] Registration.Request reg)
         {
-            throw new System.NotImplementedException();
+            var privateKey = _configuration.GetSection("PrivateKeys").GetValue<string>("JwtToken");
+
+            var result = _userServices.Create(new User 
+            {
+                FirstName = reg.FirstName, 
+                LastName = reg.LastName, 
+                Login = reg.Login,
+                Password = reg.Password, 
+                Role = (Role)reg.Role
+            }, privateKey);
+
+            if (result is not null)
+            {
+                Registration.Response response = new Registration.Response { Token = result };
+                return Ok(response);
+            }
+
+            return BadRequest(new { Error = "Пользовтаель уже сущесвтует" });
         }
     }
 }

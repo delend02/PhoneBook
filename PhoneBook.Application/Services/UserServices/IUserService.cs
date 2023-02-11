@@ -9,7 +9,7 @@ namespace PhoneBook.Application.Services.UserServices
         User Get(User user);
         User Update(User user);
         User Delete(ulong id);
-        User Create(User user);
+        string Create(User user, string privateKey);
         TokenDTO AuthUser(string login, string password, string privateKey);
     }
 }

@@ -13,9 +13,16 @@ namespace PhoneBook.Infrastucture.Data.Repository
             _db = db;
         }
 
-        public void Create(User item)
+        public bool Create(User item)
         {
-            _db.User.Add(item);
+            var user = Get(item);
+
+            var result = user == null;
+
+            if (result)
+                _db.User.Add(item);
+
+            return result;
         }
 
         public void Delete(ulong id)
@@ -77,7 +84,7 @@ namespace PhoneBook.Infrastucture.Data.Repository
             var result = from user in _db.User
                          where user.Login.Equals(entity.Login.Trim())
                          select user;
-            return result.FirstOrDefault();
+            return result?.FirstOrDefault();
         }
 
         public void Dispose()
