@@ -9,8 +9,10 @@ namespace PhoneBook.WPF.Views.WindowViews
         {
             InitializeComponent();
 
-            (this.DataContext as WindowViewModelBase).WindowClosed += (s, e)
-                => this.Close();
+            (this.DataContext as WindowViewModelBase).WindowClosed += (s, e) =>
+            {
+                this.Close();
+            };
         }
     }
 }

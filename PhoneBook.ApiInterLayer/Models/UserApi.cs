@@ -21,7 +21,7 @@ namespace PhoneBook.ApiInterLayer.Models
 
         public static async Task<User> CreateAsync(User telephoneBook, CancellationToken cancellationToken = default)
         {
-            var endpoints = Endpoints.Users;
+            var endpoints = $"{Endpoints.Users}/registration";
             var result = await Api.Client.PostAsJsonAsync<User, User>(endpoints, telephoneBook, cancellationToken);
             return result;
         }

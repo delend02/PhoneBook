@@ -13,9 +13,10 @@ namespace PhoneBook.Infrastucture.Data.Repository
             _db = db;
         }
 
-        public void Create(TelephoneBook item)
+        public bool Create(TelephoneBook item)
         {
             _db.Books.Add(item);
+            return true;
         }
 
         public void Delete(ulong id)

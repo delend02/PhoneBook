@@ -18,13 +18,18 @@ namespace PhoneBook.Application.Services.UserServices
             _logger = logger;
         }
 
-        public User Create(User user)
+        public string Create(User user, string privateKey)
         {
-            user.Password = HashPasswordToSha256(user.Password);
-
-            _db.Create(user);
+            var userHash = user;
+            HashPasswordToSha256(userHash.Password);
+            var result = new TokenDTO();
+            var hasNeedToAdd = _db.Create(userHash);
             _db.Save();
-            return user;
+
+            if (hasNeedToAdd)
+                result = AuthUser(user.Login, user.Password, privateKey);
+
+            return result?.Token;
         }
 
         public User Delete(ulong id)

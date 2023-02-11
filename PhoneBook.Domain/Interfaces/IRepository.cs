@@ -9,7 +9,7 @@
         T GetByID(ulong id);
         IEnumerable<T> GetByID(List<ulong> id);
         T Get(T entity);
-        void Create(T item);
+        bool Create(T item);
         void Update(T item);
         void Delete(ulong id);
         void DeleteRange(IEnumerable<T> entity);
